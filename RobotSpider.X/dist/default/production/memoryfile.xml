@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <executable name="dist/default/production\RobotSpider.X.production.hex">
+    <memory name="program">
+      <units>words</units>
+      <length>16384</length>
+      <used>1573</used>
+      <free>14811</free>
+    </memory>
+    <memory name="data">
+      <units>bytes</units>
+      <length>1024</length>
+      <used>33</used>
+      <free>991</free>
+    </memory>
+  </executable>
+</project>
