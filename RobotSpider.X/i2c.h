@@ -11,6 +11,7 @@
 
 #include "uart.h"
 #include <stdio.h>
+#include <stdint.h>
 #include <stdlib.h>
 #include <xc.h>
 
@@ -29,7 +30,7 @@ void I2C_Master_Start();
 void I2C_Master_Restart();
 void I2C_Master_Stop();
 void I2C_Master_Write(char);
-int I2C_Master_Read();
+uint8_t I2C_Master_Read(uint8_t);
 
 #endif	/*I2C_H*/
 

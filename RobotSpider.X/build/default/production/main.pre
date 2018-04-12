@@ -138,6 +138,44 @@ extern char * ultoa(char * buf, unsigned long val, int base);
 
 extern char * ftoa(float f, int * status);
 
+# 14 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\string.h"
+extern void * memcpy(void *, const void *, size_t);
+extern void * memmove(void *, const void *, size_t);
+extern void * memset(void *, int, size_t);
+
+
+
+
+extern void * __builtin_memcpy(void *, const void *, size_t);
+#pragma intrinsic(__builtin_memcpy)
+
+# 36
+extern char * strcat(char *, const char *);
+extern char * strcpy(char *, const char *);
+extern char * strncat(char *, const char *, size_t);
+extern char * strncpy(char *, const char *, size_t);
+extern char * strdup(const char *);
+extern char * strtok(char *, const char *);
+
+
+extern int memcmp(const void *, const void *, size_t);
+extern int strcmp(const char *, const char *);
+extern int stricmp(const char *, const char *);
+extern int strncmp(const char *, const char *, size_t);
+extern int strnicmp(const char *, const char *, size_t);
+extern void * memchr(const void *, int, size_t);
+extern size_t strcspn(const char *, const char *);
+extern char * strpbrk(const char *, const char *);
+extern size_t strspn(const char *, const char *);
+extern char * strstr(const char *, const char *);
+extern char * stristr(const char *, const char *);
+extern char * strerror(int);
+extern size_t strlen(const char *);
+extern char * strchr(const char *, int);
+extern char * strichr(const char *, int);
+extern char * strrchr(const char *, int);
+extern char * strrichr(const char *, int);
+
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
 
@@ -2651,36 +2689,126 @@ char UART_get_char();
 void UART_send_char(char);
 void UART_send_string(char *);
 
-# 26 "i2c.h"
+# 13 "C:\Program Files (x86)\Microchip\xc8\v1.45\include\stdint.h"
+typedef signed char int8_t;
+
+# 20
+typedef signed int int16_t;
+
+# 28
+typedef signed short long int int24_t;
+
+# 36
+typedef signed long int int32_t;
+
+# 43
+typedef unsigned char uint8_t;
+
+# 49
+typedef unsigned int uint16_t;
+
+# 56
+typedef unsigned short long int uint24_t;
+
+# 63
+typedef unsigned long int uint32_t;
+
+# 71
+typedef signed char int_least8_t;
+
+# 78
+typedef signed int int_least16_t;
+
+# 90
+typedef signed short long int int_least24_t;
+
+# 98
+typedef signed long int int_least32_t;
+
+# 105
+typedef unsigned char uint_least8_t;
+
+# 111
+typedef unsigned int uint_least16_t;
+
+# 121
+typedef unsigned short long int uint_least24_t;
+
+# 128
+typedef unsigned long int uint_least32_t;
+
+# 137
+typedef signed char int_fast8_t;
+
+# 144
+typedef signed int int_fast16_t;
+
+# 156
+typedef signed short long int int_fast24_t;
+
+# 164
+typedef signed long int int_fast32_t;
+
+# 171
+typedef unsigned char uint_fast8_t;
+
+# 177
+typedef unsigned int uint_fast16_t;
+
+# 187
+typedef unsigned short long int uint_fast24_t;
+
+# 194
+typedef unsigned long int uint_fast32_t;
+
+# 200
+typedef int32_t intmax_t;
+
+
+
+
+typedef uint32_t uintmax_t;
+
+
+
+
+typedef int16_t intptr_t;
+
+
+
+
+typedef uint16_t uintptr_t;
+
+# 27 "i2c.h"
 void I2C_Master_Init();
 void I2C_Master_Wait();
 void I2C_Master_Start();
 void I2C_Master_Restart();
 void I2C_Master_Stop();
 void I2C_Master_Write(char);
-int I2C_Master_Read();
+uint8_t I2C_Master_Read(uint8_t);
 
-# 11 "MPU6050.h"
+# 12 "MPU6050.h"
 typedef struct
 {
 struct
 {
-signed int X;
-signed int Y;
-signed int Z;
+int16_t X;
+int16_t Y;
+int16_t Z;
 }Accel;
-signed int Temperature;
+int16_t Temperature;
 struct
 {
-signed int X;
-signed int Y;
-signed int Z;
+int16_t X;
+int16_t Y;
+int16_t Z;
 }Gyro;
 }MPU6050;
 
 void MPU6050_Init();
 
-int MPU6050_Read();
+void MPU6050_Read(MPU6050* );
 
 # 450 "OV7670_Reg_Values.h"
 struct regval_list{
@@ -2841,7 +2969,7 @@ char camInit();
 
 char regWrite(char, char);
 
-char regRead(char);
+uint8_t regRead(char);
 
 char writeRegCluster(const struct regval_list reglist[]);
 
@@ -2856,23 +2984,15 @@ void Init_OV7670();
 void Init_QVGA();
 
 
-# 22 "main.c"
+# 25 "main.c"
 #pragma config CLKOUTEN = 0
 #pragma config FOSC = INTOSC
 
 
 
-
-char regWrite(char reg, char data);
-char regRead(char reg);
-char camInit(void);
-void captureImage(char w, char h);
-char I2C_Init(void);
-char writeRegCluster(const struct regval_list reglist[]);
-char fallingEdge(char pin);
-char risingEdge(char pin);
-void Init_OV7670();
-void Init_QVGA();
+void int2str(char*,int);
+void itoa1(int, char[]);
+void reverse(char []);
 
 
 
@@ -2882,6 +3002,8 @@ ANSELC= 0;
 OSCCONbits.IRCF = 0xf;
 OSCCONbits.SCS = 0x3;
 
+
+
 TRISA6 = 0;
 TRISB = 0xf;
 TRISC |= 0x3;
@@ -2889,31 +3011,86 @@ TRISA0 = 1;
 TRISC3 = 1;
 TRISC4 = 1;
 
-MPU6050_Init();
-ADC_Init();
+
 I2C_Master_Init();
 Initialize_UART();
-camInit();
-Init_OV7670();
-Init_QVGA();
+
+# 63
+MPU6050 *Sensor;
+MPU6050_Init();
+
 
 
 
 while(1){
 if(PORTAbits.RA0 != 0){
-char t = MPU6050_Read();
-
-UART_send_string("REG_COM7 = ");
-UART_send_char(t);
-UART_send_char('\n');
+char buf[10];
+MPU6050_Read(&Sensor);
+itoa1(Sensor->Accel.X, buf);
+UART_send_string("AccelX = ");
+UART_send_string(buf);
+UART_send_string("\n");
 }else{
 UART_send_string("IR =");
 UART_send_char(ADC_Read());
 UART_send_char('\n');
 }
-
 _delay((unsigned long)((1000)*(16000000L/4000.0)));
 }
 return 0;
+}
+
+
+
+void int2str(char* buf,int16_t num){
+char tmp[5];
+int mul[] = {1000,100,10,1};
+if(num < 0 )
+{
+num = num*(-1);
+tmp[0] = '-';
+} else {
+tmp[0] = '+';
+}
+
+uint16_t x = num;
+uint16_t y = num;
+
+for(uint8_t i = 0; i < 4; i++)
+{
+y = x%mul[i];
+tmp[i+1]= '0' + x/mul[i];
+x = y;
+}
+
+strcpy(buf,tmp);
+}
+
+void itoa1(int n, char s[])
+{
+int i, sign;
+
+if ((sign = n) < 0)
+n = -n;
+i = 0;
+do {
+s[i++] = n % 10 + '0';
+} while ((n /= 10) > 0);
+if (sign < 0)
+s[i++] = '-';
+s[i] = '\0';
+reverse(s);
+}
+
+void reverse(char s[])
+{
+int i, j;
+char c;
+
+for (i = 0, j = strlen(s)-1; i<j; i++, j--) {
+c = s[i];
+s[i] = s[j];
+s[j] = c;
+}
 }
 

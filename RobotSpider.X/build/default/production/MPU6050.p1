@@ -1,21 +1,21 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"28 i2c.h
+"29 i2c.h
 [v _I2C_Master_Start `(v ~T0 @X0 0 ef ]
-"31
+"32
 [v _I2C_Master_Write `(v ~T0 @X0 0 ef1`uc ]
-"30
+"31
 [v _I2C_Master_Stop `(v ~T0 @X0 0 ef ]
-"14 MPU6050.h
+"15 MPU6050.h
 [s S238 `i 1 `i 1 `i 1 ]
 [n S238 . X Y Z ]
-"21
+"22
 [s S239 `i 1 `i 1 `i 1 ]
 [n S239 . X Y Z ]
-"12
+"13
 [s S237 `S238 1 `i 1 `S239 1 ]
 [n S237 . Accel Temperature Gyro ]
-"32 i2c.h
-[v _I2C_Master_Read `(i ~T0 @X0 0 ef ]
+"33 i2c.h
+[v _I2C_Master_Read `(uc ~T0 @X0 0 ef1`uc ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -1871,6 +1871,34 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
 [; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
 [; ;stdio.h: 195: extern int printf(const char *, ...);
+[; ;stdint.h: 13: typedef signed char int8_t;
+[; ;stdint.h: 20: typedef signed int int16_t;
+[; ;stdint.h: 28: typedef signed short long int int24_t;
+[; ;stdint.h: 36: typedef signed long int int32_t;
+[; ;stdint.h: 43: typedef unsigned char uint8_t;
+[; ;stdint.h: 49: typedef unsigned int uint16_t;
+[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
+[; ;stdint.h: 63: typedef unsigned long int uint32_t;
+[; ;stdint.h: 71: typedef signed char int_least8_t;
+[; ;stdint.h: 78: typedef signed int int_least16_t;
+[; ;stdint.h: 90: typedef signed short long int int_least24_t;
+[; ;stdint.h: 98: typedef signed long int int_least32_t;
+[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
+[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
+[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
+[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
+[; ;stdint.h: 137: typedef signed char int_fast8_t;
+[; ;stdint.h: 144: typedef signed int int_fast16_t;
+[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
+[; ;stdint.h: 164: typedef signed long int int_fast32_t;
+[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
+[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
+[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
+[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
+[; ;stdint.h: 200: typedef int32_t intmax_t;
+[; ;stdint.h: 205: typedef uint32_t uintmax_t;
+[; ;stdint.h: 210: typedef int16_t intptr_t;
+[; ;stdint.h: 215: typedef uint16_t uintptr_t;
 [; ;stdlib.h: 7: typedef unsigned short wchar_t;
 [; ;stdlib.h: 15: typedef struct {
 [; ;stdlib.h: 16: int rem;
@@ -1921,140 +1949,139 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdlib.h: 101: extern char * ltoa(char * buf, long val, int base);
 [; ;stdlib.h: 102: extern char * ultoa(char * buf, unsigned long val, int base);
 [; ;stdlib.h: 104: extern char * ftoa(float f, int * status);
-[; ;i2c.h: 26: void I2C_Master_Init();
-[; ;i2c.h: 27: void I2C_Master_Wait();
-[; ;i2c.h: 28: void I2C_Master_Start();
-[; ;i2c.h: 29: void I2C_Master_Restart();
-[; ;i2c.h: 30: void I2C_Master_Stop();
-[; ;i2c.h: 31: void I2C_Master_Write(char);
-[; ;i2c.h: 32: int I2C_Master_Read();
-[; ;MPU6050.h: 11: typedef struct
-[; ;MPU6050.h: 12: {
-[; ;MPU6050.h: 13: struct
-[; ;MPU6050.h: 14: {
-[; ;MPU6050.h: 15: signed int X;
-[; ;MPU6050.h: 16: signed int Y;
-[; ;MPU6050.h: 17: signed int Z;
-[; ;MPU6050.h: 18: }Accel;
-[; ;MPU6050.h: 19: signed int Temperature;
-[; ;MPU6050.h: 20: struct
-[; ;MPU6050.h: 21: {
-[; ;MPU6050.h: 22: signed int X;
-[; ;MPU6050.h: 23: signed int Y;
-[; ;MPU6050.h: 24: signed int Z;
-[; ;MPU6050.h: 25: }Gyro;
-[; ;MPU6050.h: 26: }MPU6050;
-[; ;MPU6050.h: 28: void MPU6050_Init();
-[; ;MPU6050.h: 30: int MPU6050_Read();
-"3 MPU6050.c
+[; ;i2c.h: 27: void I2C_Master_Init();
+[; ;i2c.h: 28: void I2C_Master_Wait();
+[; ;i2c.h: 29: void I2C_Master_Start();
+[; ;i2c.h: 30: void I2C_Master_Restart();
+[; ;i2c.h: 31: void I2C_Master_Stop();
+[; ;i2c.h: 32: void I2C_Master_Write(char);
+[; ;i2c.h: 33: uint8_t I2C_Master_Read(uint8_t);
+[; ;MPU6050.h: 12: typedef struct
+[; ;MPU6050.h: 13: {
+[; ;MPU6050.h: 14: struct
+[; ;MPU6050.h: 15: {
+[; ;MPU6050.h: 16: int16_t X;
+[; ;MPU6050.h: 17: int16_t Y;
+[; ;MPU6050.h: 18: int16_t Z;
+[; ;MPU6050.h: 19: }Accel;
+[; ;MPU6050.h: 20: int16_t Temperature;
+[; ;MPU6050.h: 21: struct
+[; ;MPU6050.h: 22: {
+[; ;MPU6050.h: 23: int16_t X;
+[; ;MPU6050.h: 24: int16_t Y;
+[; ;MPU6050.h: 25: int16_t Z;
+[; ;MPU6050.h: 26: }Gyro;
+[; ;MPU6050.h: 27: }MPU6050;
+[; ;MPU6050.h: 29: void MPU6050_Init();
+[; ;MPU6050.h: 31: void MPU6050_Read(MPU6050* );
+"5 MPU6050.c
 [v _MPU6050_Init `(v ~T0 @X0 1 ef ]
-"4
+"6
 {
-[; ;MPU6050.c: 3: void MPU6050_Init()
-[; ;MPU6050.c: 4: {
+[; ;MPU6050.c: 5: void MPU6050_Init()
+[; ;MPU6050.c: 6: {
 [e :U _MPU6050_Init ]
 [f ]
-[; ;MPU6050.c: 5: I2C_Master_Start();
-"5
-[e ( _I2C_Master_Start ..  ]
-[; ;MPU6050.c: 6: I2C_Master_Write( 0xD0 );
-"6
-[e ( _I2C_Master_Write (1 -> -> 208 `i `uc ]
-[; ;MPU6050.c: 7: I2C_Master_Write( 0x6B );
+[; ;MPU6050.c: 7: I2C_Master_Start();
 "7
-[e ( _I2C_Master_Write (1 -> -> 107 `i `uc ]
-[; ;MPU6050.c: 8: I2C_Master_Write( 2 );
-"8
-[e ( _I2C_Master_Write (1 -> -> 2 `i `uc ]
-[; ;MPU6050.c: 9: I2C_Master_Write( 0 );
-"9
-[e ( _I2C_Master_Write (1 -> -> 0 `i `uc ]
-[; ;MPU6050.c: 10: I2C_Master_Stop();
-"10
-[e ( _I2C_Master_Stop ..  ]
-[; ;MPU6050.c: 12: I2C_Master_Start();
-"12
 [e ( _I2C_Master_Start ..  ]
-[; ;MPU6050.c: 13: I2C_Master_Write( 0xD0 );
-"13
+[; ;MPU6050.c: 8: I2C_Master_Write( 0xD0 );
+"8
 [e ( _I2C_Master_Write (1 -> -> 208 `i `uc ]
-[; ;MPU6050.c: 14: I2C_Master_Write( 0x1B );
-"14
-[e ( _I2C_Master_Write (1 -> -> 27 `i `uc ]
-[; ;MPU6050.c: 15: I2C_Master_Write( 0 );
-"15
+[; ;MPU6050.c: 9: I2C_Master_Write( 0x6B );
+"9
+[e ( _I2C_Master_Write (1 -> -> 107 `i `uc ]
+[; ;MPU6050.c: 10: I2C_Master_Write( 2 );
+"10
+[e ( _I2C_Master_Write (1 -> -> 2 `i `uc ]
+[; ;MPU6050.c: 11: I2C_Master_Write( 0 );
+"11
 [e ( _I2C_Master_Write (1 -> -> 0 `i `uc ]
-[; ;MPU6050.c: 16: I2C_Master_Write( 0 );
-"16
-[e ( _I2C_Master_Write (1 -> -> 0 `i `uc ]
-[; ;MPU6050.c: 17: I2C_Master_Stop();
-"17
+[; ;MPU6050.c: 12: I2C_Master_Stop();
+"12
 [e ( _I2C_Master_Stop ..  ]
-[; ;MPU6050.c: 18: }
+[; ;MPU6050.c: 14: I2C_Master_Start();
+"14
+[e ( _I2C_Master_Start ..  ]
+[; ;MPU6050.c: 15: I2C_Master_Write( 0xD0 );
+"15
+[e ( _I2C_Master_Write (1 -> -> 208 `i `uc ]
+[; ;MPU6050.c: 16: I2C_Master_Write( 0x1B );
+"16
+[e ( _I2C_Master_Write (1 -> -> 27 `i `uc ]
+[; ;MPU6050.c: 17: I2C_Master_Write( 0 );
+"17
+[e ( _I2C_Master_Write (1 -> -> 0 `i `uc ]
+[; ;MPU6050.c: 18: I2C_Master_Write( 0 );
 "18
+[e ( _I2C_Master_Write (1 -> -> 0 `i `uc ]
+[; ;MPU6050.c: 19: I2C_Master_Stop();
+"19
+[e ( _I2C_Master_Stop ..  ]
+[; ;MPU6050.c: 20: }
+"20
 [e :UE 240 ]
 }
-"20
-[v _MPU6050_Read `(i ~T0 @X0 1 ef ]
-"21
-{
-[; ;MPU6050.c: 20: int MPU6050_Read()
-[; ;MPU6050.c: 21: {
-[e :U _MPU6050_Read ]
-[f ]
 "22
-[v _Sensor `S237 ~T0 @X0 1 a ]
-[; ;MPU6050.c: 22: MPU6050 Sensor;
-[; ;MPU6050.c: 23: I2C_Master_Start();
+[v _MPU6050_Read `(v ~T0 @X0 1 ef1`*S237 ]
 "23
-[e ( _I2C_Master_Start ..  ]
-[; ;MPU6050.c: 24: I2C_Master_Write( 0xD0 );
+{
+[; ;MPU6050.c: 22: void MPU6050_Read(MPU6050 *Sensor)
+[; ;MPU6050.c: 23: {
+[e :U _MPU6050_Read ]
+"22
+[v _Sensor `*S237 ~T0 @X0 1 r1 ]
+"23
+[f ]
+[; ;MPU6050.c: 24: I2C_Master_Start();
 "24
-[e ( _I2C_Master_Write (1 -> -> 208 `i `uc ]
-[; ;MPU6050.c: 25: I2C_Master_Write( 0x3B );
-"25
-[e ( _I2C_Master_Write (1 -> -> 59 `i `uc ]
-[; ;MPU6050.c: 26: I2C_Master_Start();
-"26
 [e ( _I2C_Master_Start ..  ]
-[; ;MPU6050.c: 27: I2C_Master_Write( 0xD0 | 1 );
+[; ;MPU6050.c: 25: I2C_Master_Write( 0xD0 );
+"25
+[e ( _I2C_Master_Write (1 -> -> 208 `i `uc ]
+[; ;MPU6050.c: 26: I2C_Master_Write( 0x3B );
+"26
+[e ( _I2C_Master_Write (1 -> -> 59 `i `uc ]
+[; ;MPU6050.c: 27: I2C_Master_Start();
 "27
-[e ( _I2C_Master_Write (1 -> | -> 208 `i -> 1 `i `uc ]
-[; ;MPU6050.c: 28: Sensor.Accel.X = ( I2C_Master_Read() << 8 ) | I2C_Master_Read();
+[e ( _I2C_Master_Start ..  ]
+[; ;MPU6050.c: 28: I2C_Master_Write( 0xD0 | 1 );
 "28
-[e = . . _Sensor 0 0 | << ( _I2C_Master_Read ..  -> 8 `i ( _I2C_Master_Read ..  ]
-[; ;MPU6050.c: 29: Sensor.Accel.Y = ( I2C_Master_Read() << 8 ) | I2C_Master_Read();
-"29
-[e = . . _Sensor 0 1 | << ( _I2C_Master_Read ..  -> 8 `i ( _I2C_Master_Read ..  ]
-[; ;MPU6050.c: 30: Sensor.Accel.Z = ( I2C_Master_Read() << 8 ) | I2C_Master_Read();
+[e ( _I2C_Master_Write (1 -> | -> 208 `i -> 1 `i `uc ]
+[; ;MPU6050.c: 30: Sensor->Accel.X = ( I2C_Master_Read(1) << 8 );
 "30
-[e = . . _Sensor 0 2 | << ( _I2C_Master_Read ..  -> 8 `i ( _I2C_Master_Read ..  ]
-[; ;MPU6050.c: 31: Sensor.Temperature = ( I2C_Master_Read() << 8 ) | I2C_Master_Read();
+[e = . . *U _Sensor 0 0 << -> ( _I2C_Master_Read (1 -> -> 1 `i `uc `i -> 8 `i ]
+[; ;MPU6050.c: 31: I2C_Master_Read(1);
 "31
-[e = . _Sensor 1 | << ( _I2C_Master_Read ..  -> 8 `i ( _I2C_Master_Read ..  ]
-[; ;MPU6050.c: 32: Sensor.Gyro.X = ( I2C_Master_Read() << 8 ) | I2C_Master_Read();
+[e ( _I2C_Master_Read (1 -> -> 1 `i `uc ]
+[; ;MPU6050.c: 32: Sensor->Accel.Y = ( I2C_Master_Read(1) << 8 ) | I2C_Master_Read(1);
 "32
-[e = . . _Sensor 2 0 | << ( _I2C_Master_Read ..  -> 8 `i ( _I2C_Master_Read ..  ]
-[; ;MPU6050.c: 33: Sensor.Gyro.Y = ( I2C_Master_Read() << 8 ) |I2C_Master_Read();
+[e = . . *U _Sensor 0 1 | << -> ( _I2C_Master_Read (1 -> -> 1 `i `uc `i -> 8 `i -> ( _I2C_Master_Read (1 -> -> 1 `i `uc `i ]
+[; ;MPU6050.c: 33: Sensor->Accel.Z = ( I2C_Master_Read(1) << 8 ) | I2C_Master_Read(1);
 "33
-[e = . . _Sensor 2 1 | << ( _I2C_Master_Read ..  -> 8 `i ( _I2C_Master_Read ..  ]
-[; ;MPU6050.c: 34: Sensor.Gyro.Z = ( I2C_Master_Read() << 8 ) | I2C_Master_Read();
+[e = . . *U _Sensor 0 2 | << -> ( _I2C_Master_Read (1 -> -> 1 `i `uc `i -> 8 `i -> ( _I2C_Master_Read (1 -> -> 1 `i `uc `i ]
+[; ;MPU6050.c: 34: Sensor->Temperature = ( I2C_Master_Read(1) << 8 ) | I2C_Master_Read(1);
 "34
-[e = . . _Sensor 2 2 | << ( _I2C_Master_Read ..  -> 8 `i ( _I2C_Master_Read ..  ]
-[; ;MPU6050.c: 35: I2C_Master_Stop();
+[e = . *U _Sensor 1 | << -> ( _I2C_Master_Read (1 -> -> 1 `i `uc `i -> 8 `i -> ( _I2C_Master_Read (1 -> -> 1 `i `uc `i ]
+[; ;MPU6050.c: 35: Sensor->Gyro.X = ( I2C_Master_Read(1)<<8) | I2C_Master_Read(1);
 "35
-[e ( _I2C_Master_Stop ..  ]
-[; ;MPU6050.c: 36: Sensor.Temperature += 12421;
+[e = . . *U _Sensor 2 0 | << -> ( _I2C_Master_Read (1 -> -> 1 `i `uc `i -> 8 `i -> ( _I2C_Master_Read (1 -> -> 1 `i `uc `i ]
+[; ;MPU6050.c: 36: Sensor->Gyro.Y = ( I2C_Master_Read(1) << 8 ) |I2C_Master_Read(1);
 "36
-[e =+ . _Sensor 1 -> 12421 `i ]
-[; ;MPU6050.c: 37: Sensor.Temperature /= 340;
+[e = . . *U _Sensor 2 1 | << -> ( _I2C_Master_Read (1 -> -> 1 `i `uc `i -> 8 `i -> ( _I2C_Master_Read (1 -> -> 1 `i `uc `i ]
+[; ;MPU6050.c: 37: Sensor->Gyro.Z = ( I2C_Master_Read(1) << 8 ) | I2C_Master_Read(1);
 "37
-[e =/ . _Sensor 1 -> -> 340 `us `i ]
-[; ;MPU6050.c: 38: return Sensor.Gyro.X;
+[e = . . *U _Sensor 2 2 | << -> ( _I2C_Master_Read (1 -> -> 1 `i `uc `i -> 8 `i -> ( _I2C_Master_Read (1 -> -> 1 `i `uc `i ]
+[; ;MPU6050.c: 38: I2C_Master_Stop();
 "38
-[e ) . . _Sensor 2 0 ]
-[e $UE 241  ]
-[; ;MPU6050.c: 39: }
+[e ( _I2C_Master_Stop ..  ]
+[; ;MPU6050.c: 39: Sensor->Temperature += 12421;
 "39
+[e =+ . *U _Sensor 1 -> 12421 `i ]
+[; ;MPU6050.c: 40: Sensor->Temperature /= 340;
+"40
+[e =/ . *U _Sensor 1 -> -> 340 `us `i ]
+[; ;MPU6050.c: 42: }
+"42
 [e :UE 241 ]
 }

@@ -11,10 +11,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TRISC4 `Vb ~T0 @X0 0 e@1140 ]
 "17 uart.h
 [v _UART_send_char `(v ~T0 @X0 0 ef1`uc ]
-[v F1814 `(v ~T0 @X0 1 tf1`ul ]
-"153 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic.h
-[v __delay `JF1814 ~T0 @X0 0 e ]
-[p i __delay ]
 "3040 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f1518.h
 [v _SSPSTAT `Vuc ~T0 @X0 0 e@532 ]
 "4691
@@ -27,6 +23,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _SSPBUF `Vuc ~T0 @X0 0 e@529 ]
 "4657
 [v _RCEN `Vb ~T0 @X0 0 e@4275 ]
+"4283
+[v _ACKDT `Vb ~T0 @X0 0 e@4277 ]
+"4285
+[v _ACKEN `Vb ~T0 @X0 0 e@4276 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -1882,6 +1882,34 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
 [; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
 [; ;stdio.h: 195: extern int printf(const char *, ...);
+[; ;stdint.h: 13: typedef signed char int8_t;
+[; ;stdint.h: 20: typedef signed int int16_t;
+[; ;stdint.h: 28: typedef signed short long int int24_t;
+[; ;stdint.h: 36: typedef signed long int int32_t;
+[; ;stdint.h: 43: typedef unsigned char uint8_t;
+[; ;stdint.h: 49: typedef unsigned int uint16_t;
+[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
+[; ;stdint.h: 63: typedef unsigned long int uint32_t;
+[; ;stdint.h: 71: typedef signed char int_least8_t;
+[; ;stdint.h: 78: typedef signed int int_least16_t;
+[; ;stdint.h: 90: typedef signed short long int int_least24_t;
+[; ;stdint.h: 98: typedef signed long int int_least32_t;
+[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
+[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
+[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
+[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
+[; ;stdint.h: 137: typedef signed char int_fast8_t;
+[; ;stdint.h: 144: typedef signed int int_fast16_t;
+[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
+[; ;stdint.h: 164: typedef signed long int int_fast32_t;
+[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
+[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
+[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
+[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
+[; ;stdint.h: 200: typedef int32_t intmax_t;
+[; ;stdint.h: 205: typedef uint32_t uintmax_t;
+[; ;stdint.h: 210: typedef int16_t intptr_t;
+[; ;stdint.h: 215: typedef uint16_t uintptr_t;
 [; ;stdlib.h: 7: typedef unsigned short wchar_t;
 [; ;stdlib.h: 15: typedef struct {
 [; ;stdlib.h: 16: int rem;
@@ -1932,13 +1960,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdlib.h: 101: extern char * ltoa(char * buf, long val, int base);
 [; ;stdlib.h: 102: extern char * ultoa(char * buf, unsigned long val, int base);
 [; ;stdlib.h: 104: extern char * ftoa(float f, int * status);
-[; ;i2c.h: 26: void I2C_Master_Init();
-[; ;i2c.h: 27: void I2C_Master_Wait();
-[; ;i2c.h: 28: void I2C_Master_Start();
-[; ;i2c.h: 29: void I2C_Master_Restart();
-[; ;i2c.h: 30: void I2C_Master_Stop();
-[; ;i2c.h: 31: void I2C_Master_Write(char);
-[; ;i2c.h: 32: int I2C_Master_Read();
+[; ;i2c.h: 27: void I2C_Master_Init();
+[; ;i2c.h: 28: void I2C_Master_Wait();
+[; ;i2c.h: 29: void I2C_Master_Start();
+[; ;i2c.h: 30: void I2C_Master_Restart();
+[; ;i2c.h: 31: void I2C_Master_Stop();
+[; ;i2c.h: 32: void I2C_Master_Write(char);
+[; ;i2c.h: 33: uint8_t I2C_Master_Read(uint8_t);
 "12 i2c.c
 [v _I2C_Master_Init `(v ~T0 @X0 1 ef ]
 {
@@ -1948,9 +1976,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;i2c.c: 13: SSPCON1 = 0x28;
 "13
 [e = _SSPCON1 -> -> 40 `i `uc ]
-[; ;i2c.c: 14: SSPCON2 = 0x20;
+[; ;i2c.c: 14: SSPCON2 = 0x0;
 "14
-[e = _SSPCON2 -> -> 32 `i `uc ]
+[e = _SSPCON2 -> -> 0 `i `uc ]
 [; ;i2c.c: 15: SSPADD = 16000000L/(4*400000L) - 1;
 "15
 [e = _SSPADD -> - / -> 16000000 `l * -> -> 4 `i `l -> 400000 `l -> -> 1 `i `l `uc ]
@@ -1977,15 +2005,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;i2c.c: 23: {
 "23
 {
-[; ;i2c.c: 24: UART_send_char('w');
-"24
-[e ( _UART_send_char (1 -> -> 119 `ui `uc ]
-[; ;i2c.c: 25: UART_send_char('\n');
+[; ;i2c.c: 25: UART_send_char('w');
 "25
-[e ( _UART_send_char (1 -> -> 10 `ui `uc ]
-[; ;i2c.c: 26: _delay((unsigned long)((1000)*(16000000L/4000.0)));
+[e ( _UART_send_char (1 -> -> 119 `ui `uc ]
+[; ;i2c.c: 26: UART_send_char('\n');
 "26
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[e ( _UART_send_char (1 -> -> 10 `ui `uc ]
 "27
 }
 [e :U 239 ]
@@ -2063,12 +2088,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :UE 245 ]
 }
 "50
-[v _I2C_Master_Read `(i ~T0 @X0 1 ef ]
+[v _I2C_Master_Read `(uc ~T0 @X0 1 ef1`uc ]
 "51
 {
-[; ;i2c.c: 50: int I2C_Master_Read()
+[; ;i2c.c: 50: uint8_t I2C_Master_Read(uint8_t device)
 [; ;i2c.c: 51: {
 [e :U _I2C_Master_Read ]
+"50
+[v _device `uc ~T0 @X0 1 r1 ]
+"51
 [f ]
 "52
 [v _temp `uc ~T0 @X0 1 a ]
@@ -2088,11 +2116,25 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;i2c.c: 57: I2C_Master_Wait();
 "57
 [e ( _I2C_Master_Wait ..  ]
-[; ;i2c.c: 60: return temp;
+[; ;i2c.c: 60: if(!device){
 "60
-[e ) -> _temp `i ]
-[e $UE 246  ]
-[; ;i2c.c: 61: }
+[e $ ! ! != -> _device `i -> -> -> 0 `i `uc `i 247  ]
+{
+[; ;i2c.c: 61: ACKDT = 0;
 "61
+[e = _ACKDT -> -> 0 `i `b ]
+[; ;i2c.c: 62: ACKEN = 1;
+"62
+[e = _ACKEN -> -> 1 `i `b ]
+"63
+}
+[e :U 247 ]
+[; ;i2c.c: 63: }
+[; ;i2c.c: 64: return temp;
+"64
+[e ) _temp ]
+[e $UE 246  ]
+[; ;i2c.c: 65: }
+"65
 [e :UE 246 ]
 }

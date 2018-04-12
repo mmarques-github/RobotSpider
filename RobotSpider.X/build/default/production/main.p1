@@ -30,20 +30,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TRISC3 `Vb ~T0 @X0 0 e@1139 ]
 "4841
 [v _TRISC4 `Vb ~T0 @X0 0 e@1140 ]
-"28 MPU6050.h
-[v _MPU6050_Init `(v ~T0 @X0 0 ef ]
-"9 adc.h
-[v _ADC_Init `(v ~T0 @X0 0 ef ]
-"26 i2c.h
+"27 i2c.h
 [v _I2C_Master_Init `(v ~T0 @X0 0 ef ]
 "14 uart.h
 [v _Initialize_UART `(v ~T0 @X0 0 ef ]
-"19 OV76070.h
-[v _camInit `(uc ~T0 @X0 0 ef ]
-"33
-[v _Init_OV7670 `(v ~T0 @X0 0 ef ]
-"35
-[v _Init_QVGA `(v ~T0 @X0 0 ef ]
+"15 MPU6050.h
+[s S238 `i 1 `i 1 `i 1 ]
+[n S238 . X Y Z ]
+"22
+[s S239 `i 1 `i 1 `i 1 ]
+[n S239 . X Y Z ]
+"13
+[s S237 `S238 1 `i 1 `S239 1 ]
+[n S237 . Accel Temperature Gyro ]
+"29
+[v _MPU6050_Init `(v ~T0 @X0 0 ef ]
 "433 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f1518.h
 [s S34 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S34 . RA0 RA1 RA2 RA3 RA4 RA5 RA6 RA7 ]
@@ -52,18 +53,26 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S33 . . ]
 "444
 [v _PORTAbits `VS33 ~T0 @X0 0 e@12 ]
-"30 MPU6050.h
-[v _MPU6050_Read `(i ~T0 @X0 0 ef ]
+"31 MPU6050.h
+[v _MPU6050_Read `(v ~T0 @X0 0 ef1`*S237 ]
+"31 main.c
+[v _itoa1 `(v ~T0 @X0 0 ef2`i`*uc ]
 "18 uart.h
 [v _UART_send_string `(v ~T0 @X0 0 ef1`*uc ]
 "17
 [v _UART_send_char `(v ~T0 @X0 0 ef1`uc ]
 "11 adc.h
 [v _ADC_Read `(i ~T0 @X0 0 ef ]
-[v F1995 `(v ~T0 @X0 1 tf1`ul ]
+[v F2083 `(v ~T0 @X0 1 tf1`ul ]
 "153 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic.h
-[v __delay `JF1995 ~T0 @X0 0 e ]
+[v __delay `JF2083 ~T0 @X0 0 e ]
 [p i __delay ]
+"37 C:\Program Files (x86)\Microchip\xc8\v1.45\include\string.h
+[v _strcpy `(*uc ~T0 @X0 0 ef2`*uc`*Cuc ]
+"32 main.c
+[v _reverse `(v ~T0 @X0 0 ef1`*uc ]
+"56 C:\Program Files (x86)\Microchip\xc8\v1.45\include\string.h
+[v _strlen `(ui ~T0 @X0 0 ef1`*Cuc ]
 [; ;__size_t.h: 4: typedef unsigned size_t;
 [; ;stdarg.h: 7: typedef void * va_list[1];
 [; ;stdarg.h: 10: extern void * __va_start(void);
@@ -145,6 +154,33 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdlib.h: 101: extern char * ltoa(char * buf, long val, int base);
 [; ;stdlib.h: 102: extern char * ultoa(char * buf, unsigned long val, int base);
 [; ;stdlib.h: 104: extern char * ftoa(float f, int * status);
+[; ;string.h: 14: extern void * memcpy(void *, const void *, size_t);
+[; ;string.h: 15: extern void * memmove(void *, const void *, size_t);
+[; ;string.h: 16: extern void * memset(void *, int, size_t);
+[; ;string.h: 21: extern void * __builtin_memcpy(void *, const void *, size_t);
+[; ;string.h: 36: extern char * strcat(char *, const char *);
+[; ;string.h: 37: extern char * strcpy(char *, const char *);
+[; ;string.h: 38: extern char * strncat(char *, const char *, size_t);
+[; ;string.h: 39: extern char * strncpy(char *, const char *, size_t);
+[; ;string.h: 40: extern char * strdup(const char *);
+[; ;string.h: 41: extern char * strtok(char *, const char *);
+[; ;string.h: 44: extern int memcmp(const void *, const void *, size_t);
+[; ;string.h: 45: extern int strcmp(const char *, const char *);
+[; ;string.h: 46: extern int stricmp(const char *, const char *);
+[; ;string.h: 47: extern int strncmp(const char *, const char *, size_t);
+[; ;string.h: 48: extern int strnicmp(const char *, const char *, size_t);
+[; ;string.h: 49: extern void * memchr(const void *, int, size_t);
+[; ;string.h: 50: extern size_t strcspn(const char *, const char *);
+[; ;string.h: 51: extern char * strpbrk(const char *, const char *);
+[; ;string.h: 52: extern size_t strspn(const char *, const char *);
+[; ;string.h: 53: extern char * strstr(const char *, const char *);
+[; ;string.h: 54: extern char * stristr(const char *, const char *);
+[; ;string.h: 55: extern char * strerror(int);
+[; ;string.h: 56: extern size_t strlen(const char *);
+[; ;string.h: 57: extern char * strchr(const char *, int);
+[; ;string.h: 58: extern char * strichr(const char *, int);
+[; ;string.h: 59: extern char * strrchr(const char *, int);
+[; ;string.h: 60: extern char * strrichr(const char *, int);
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;pic16f1518.h: 50: extern volatile unsigned char INDF0 @ 0x000;
@@ -1971,31 +2007,59 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;uart.h: 16: char UART_get_char();
 [; ;uart.h: 17: void UART_send_char(char);
 [; ;uart.h: 18: void UART_send_string(char *);
-[; ;i2c.h: 26: void I2C_Master_Init();
-[; ;i2c.h: 27: void I2C_Master_Wait();
-[; ;i2c.h: 28: void I2C_Master_Start();
-[; ;i2c.h: 29: void I2C_Master_Restart();
-[; ;i2c.h: 30: void I2C_Master_Stop();
-[; ;i2c.h: 31: void I2C_Master_Write(char);
-[; ;i2c.h: 32: int I2C_Master_Read();
-[; ;MPU6050.h: 11: typedef struct
-[; ;MPU6050.h: 12: {
-[; ;MPU6050.h: 13: struct
-[; ;MPU6050.h: 14: {
-[; ;MPU6050.h: 15: signed int X;
-[; ;MPU6050.h: 16: signed int Y;
-[; ;MPU6050.h: 17: signed int Z;
-[; ;MPU6050.h: 18: }Accel;
-[; ;MPU6050.h: 19: signed int Temperature;
-[; ;MPU6050.h: 20: struct
-[; ;MPU6050.h: 21: {
-[; ;MPU6050.h: 22: signed int X;
-[; ;MPU6050.h: 23: signed int Y;
-[; ;MPU6050.h: 24: signed int Z;
-[; ;MPU6050.h: 25: }Gyro;
-[; ;MPU6050.h: 26: }MPU6050;
-[; ;MPU6050.h: 28: void MPU6050_Init();
-[; ;MPU6050.h: 30: int MPU6050_Read();
+[; ;stdint.h: 13: typedef signed char int8_t;
+[; ;stdint.h: 20: typedef signed int int16_t;
+[; ;stdint.h: 28: typedef signed short long int int24_t;
+[; ;stdint.h: 36: typedef signed long int int32_t;
+[; ;stdint.h: 43: typedef unsigned char uint8_t;
+[; ;stdint.h: 49: typedef unsigned int uint16_t;
+[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
+[; ;stdint.h: 63: typedef unsigned long int uint32_t;
+[; ;stdint.h: 71: typedef signed char int_least8_t;
+[; ;stdint.h: 78: typedef signed int int_least16_t;
+[; ;stdint.h: 90: typedef signed short long int int_least24_t;
+[; ;stdint.h: 98: typedef signed long int int_least32_t;
+[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
+[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
+[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
+[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
+[; ;stdint.h: 137: typedef signed char int_fast8_t;
+[; ;stdint.h: 144: typedef signed int int_fast16_t;
+[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
+[; ;stdint.h: 164: typedef signed long int int_fast32_t;
+[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
+[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
+[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
+[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
+[; ;stdint.h: 200: typedef int32_t intmax_t;
+[; ;stdint.h: 205: typedef uint32_t uintmax_t;
+[; ;stdint.h: 210: typedef int16_t intptr_t;
+[; ;stdint.h: 215: typedef uint16_t uintptr_t;
+[; ;i2c.h: 27: void I2C_Master_Init();
+[; ;i2c.h: 28: void I2C_Master_Wait();
+[; ;i2c.h: 29: void I2C_Master_Start();
+[; ;i2c.h: 30: void I2C_Master_Restart();
+[; ;i2c.h: 31: void I2C_Master_Stop();
+[; ;i2c.h: 32: void I2C_Master_Write(char);
+[; ;i2c.h: 33: uint8_t I2C_Master_Read(uint8_t);
+[; ;MPU6050.h: 12: typedef struct
+[; ;MPU6050.h: 13: {
+[; ;MPU6050.h: 14: struct
+[; ;MPU6050.h: 15: {
+[; ;MPU6050.h: 16: int16_t X;
+[; ;MPU6050.h: 17: int16_t Y;
+[; ;MPU6050.h: 18: int16_t Z;
+[; ;MPU6050.h: 19: }Accel;
+[; ;MPU6050.h: 20: int16_t Temperature;
+[; ;MPU6050.h: 21: struct
+[; ;MPU6050.h: 22: {
+[; ;MPU6050.h: 23: int16_t X;
+[; ;MPU6050.h: 24: int16_t Y;
+[; ;MPU6050.h: 25: int16_t Z;
+[; ;MPU6050.h: 26: }Gyro;
+[; ;MPU6050.h: 27: }MPU6050;
+[; ;MPU6050.h: 29: void MPU6050_Init();
+[; ;MPU6050.h: 31: void MPU6050_Read(MPU6050* );
 [; ;OV7670_Reg_Values.h: 450: struct regval_list{
 [; ;OV7670_Reg_Values.h: 451: int reg_num;
 [; ;OV7670_Reg_Values.h: 452: int value;
@@ -2966,142 +3030,328 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;OV7670_Reg_Values.h: 611: };
 [; ;OV76070.h: 19: char camInit();
 [; ;OV76070.h: 21: char regWrite(char, char);
-[; ;OV76070.h: 23: char regRead(char);
+[; ;OV76070.h: 23: uint8_t regRead(char);
 [; ;OV76070.h: 25: char writeRegCluster(const struct regval_list reglist[]);
 [; ;OV76070.h: 27: void captureImage(char, char);
 [; ;OV76070.h: 29: char fallingEdge(char);
 [; ;OV76070.h: 31: char risingEdge(char);
 [; ;OV76070.h: 33: void Init_OV7670();
 [; ;OV76070.h: 35: void Init_QVGA();
-"22 main.c
+"25 main.c
 [p x CLKOUTEN=ON ]
-"23
+"26
 [p x FOSC=INTOSC ]
-[; ;main.c: 28: char regWrite(char reg, char data);
-[; ;main.c: 29: char regRead(char reg);
-[; ;main.c: 30: char camInit(void);
-[; ;main.c: 31: void captureImage(char w, char h);
-[; ;main.c: 32: char I2C_Init(void);
-[; ;main.c: 33: char writeRegCluster(const struct regval_list reglist[]);
-[; ;main.c: 34: char fallingEdge(char pin);
-[; ;main.c: 35: char risingEdge(char pin);
-[; ;main.c: 36: void Init_OV7670();
-[; ;main.c: 37: void Init_QVGA();
+[; ;main.c: 30: void int2str(char*,int);
+[; ;main.c: 31: void itoa1(int, char[]);
+[; ;main.c: 32: void reverse(char []);
 [v $root$_main `(v ~T0 @X0 0 e ]
-"41
+"36
 [v _main `(i ~T0 @X0 1 ef ]
 {
-[; ;main.c: 41: int main(void){
+[; ;main.c: 36: int main(void){
 [e :U _main ]
 [f ]
-[; ;main.c: 42: ANSELA = 0;
-"42
+[; ;main.c: 37: ANSELA = 0;
+"37
 [e = _ANSELA -> -> 0 `i `uc ]
-[; ;main.c: 43: ANSELC= 0;
-"43
+[; ;main.c: 38: ANSELC= 0;
+"38
 [e = _ANSELC -> -> 0 `i `uc ]
-[; ;main.c: 44: OSCCONbits.IRCF = 0xf;
-"44
+[; ;main.c: 39: OSCCONbits.IRCF = 0xf;
+"39
 [e = . . _OSCCONbits 0 2 -> -> 15 `i `uc ]
-[; ;main.c: 45: OSCCONbits.SCS = 0x3;
-"45
+[; ;main.c: 40: OSCCONbits.SCS = 0x3;
+"40
 [e = . . _OSCCONbits 0 0 -> -> 3 `i `uc ]
-[; ;main.c: 47: TRISA6 = 0;
-"47
+[; ;main.c: 44: TRISA6 = 0;
+"44
 [e = _TRISA6 -> -> 0 `i `b ]
-[; ;main.c: 48: TRISB = 0xf;
-"48
+[; ;main.c: 45: TRISB = 0xf;
+"45
 [e = _TRISB -> -> 15 `i `uc ]
-[; ;main.c: 49: TRISC |= 0x3;
-"49
+[; ;main.c: 46: TRISC |= 0x3;
+"46
 [e =| _TRISC -> -> 3 `i `uc ]
-[; ;main.c: 50: TRISA0 = 1;
-"50
+[; ;main.c: 47: TRISA0 = 1;
+"47
 [e = _TRISA0 -> -> 1 `i `b ]
-[; ;main.c: 51: TRISC3 = 1;
-"51
+[; ;main.c: 48: TRISC3 = 1;
+"48
 [e = _TRISC3 -> -> 1 `i `b ]
-[; ;main.c: 52: TRISC4 = 1;
-"52
+[; ;main.c: 49: TRISC4 = 1;
+"49
 [e = _TRISC4 -> -> 1 `i `b ]
-[; ;main.c: 54: MPU6050_Init();
-"54
-[e ( _MPU6050_Init ..  ]
-[; ;main.c: 55: ADC_Init();
-"55
-[e ( _ADC_Init ..  ]
-[; ;main.c: 56: I2C_Master_Init();
-"56
+[; ;main.c: 52: I2C_Master_Init();
+"52
 [e ( _I2C_Master_Init ..  ]
-[; ;main.c: 57: Initialize_UART();
-"57
+[; ;main.c: 53: Initialize_UART();
+"53
 [e ( _Initialize_UART ..  ]
-[; ;main.c: 58: camInit();
-"58
-[e ( _camInit ..  ]
-[; ;main.c: 59: Init_OV7670();
-"59
-[e ( _Init_OV7670 ..  ]
-[; ;main.c: 60: Init_QVGA();
-"60
-[e ( _Init_QVGA ..  ]
-[; ;main.c: 64: while(1){
+"63
+[v _Sensor `*S237 ~T0 @X0 1 a ]
+[; ;main.c: 63: MPU6050 *Sensor;
+[; ;main.c: 64: MPU6050_Init();
 "64
+[e ( _MPU6050_Init ..  ]
+[; ;main.c: 69: while(1){
+"69
 [e :U 243 ]
 {
-[; ;main.c: 65: if(PORTAbits.RA0 != 0){
-"65
+[; ;main.c: 70: if(PORTAbits.RA0 != 0){
+"70
 [e $ ! != -> . . _PORTAbits 0 0 `i -> 0 `i 245  ]
 {
-"66
-[v _t `uc ~T0 @X0 1 a ]
-[; ;main.c: 66: char t = MPU6050_Read();
-[e = _t -> ( _MPU6050_Read ..  `uc ]
-[; ;main.c: 68: UART_send_string("REG_COM7 = ");
-"68
-[e ( _UART_send_string (1 -> :s 1C `*uc ]
-[; ;main.c: 69: UART_send_char(t);
-"69
-[e ( _UART_send_char (1 _t ]
-[; ;main.c: 70: UART_send_char('\n');
-"70
-[e ( _UART_send_char (1 -> -> 10 `ui `uc ]
 "71
+[v _buf `uc ~T0 @X0 -> 10 `i a ]
+[; ;main.c: 71: char buf[10];
+[; ;main.c: 72: MPU6050_Read(&Sensor);
+"72
+[e ( _MPU6050_Read (1 -> &U _Sensor `*S237 ]
+[; ;main.c: 73: itoa1(Sensor->Accel.X, buf);
+"73
+[e ( _itoa1 (2 , . . *U _Sensor 0 0 &U _buf ]
+[; ;main.c: 74: UART_send_string("AccelX = ");
+"74
+[e ( _UART_send_string (1 -> :s 1C `*uc ]
+[; ;main.c: 75: UART_send_string(buf);
+"75
+[e ( _UART_send_string (1 &U _buf ]
+[; ;main.c: 76: UART_send_string("\n");
+"76
+[e ( _UART_send_string (1 -> :s 2C `*uc ]
+"77
 }
-[; ;main.c: 71: }else{
+[; ;main.c: 77: }else{
 [e $U 246  ]
 [e :U 245 ]
 {
-[; ;main.c: 72: UART_send_string("IR =");
-"72
-[e ( _UART_send_string (1 -> :s 2C `*uc ]
-[; ;main.c: 73: UART_send_char(ADC_Read());
-"73
+[; ;main.c: 78: UART_send_string("IR =");
+"78
+[e ( _UART_send_string (1 -> :s 3C `*uc ]
+[; ;main.c: 79: UART_send_char(ADC_Read());
+"79
 [e ( _UART_send_char (1 -> ( _ADC_Read ..  `uc ]
-[; ;main.c: 74: UART_send_char('\n');
-"74
+[; ;main.c: 80: UART_send_char('\n');
+"80
 [e ( _UART_send_char (1 -> -> 10 `ui `uc ]
-"75
+"81
 }
 [e :U 246 ]
-[; ;main.c: 75: }
-[; ;main.c: 77: _delay((unsigned long)((1000)*(16000000L/4000.0)));
-"77
+[; ;main.c: 81: }
+[; ;main.c: 82: _delay((unsigned long)((1000)*(16000000L/4000.0)));
+"82
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"78
+"83
 }
 [e :U 242 ]
-"64
+"69
 [e $U 243  ]
 [e :U 244 ]
-[; ;main.c: 78: }
-[; ;main.c: 79: return 0;
-"79
+[; ;main.c: 83: }
+[; ;main.c: 84: return 0;
+"84
 [e ) -> 0 `i ]
 [e $UE 241  ]
-[; ;main.c: 80: }
-"80
+[; ;main.c: 85: }
+"85
 [e :UE 241 ]
 }
-[a 2C 73 82 32 61 0 ]
-[a 1C 82 69 71 95 67 79 77 55 32 61 32 0 ]
+"89
+[v _int2str `(v ~T0 @X0 1 ef2`*uc`i ]
+{
+[; ;main.c: 89: void int2str(char* buf,int16_t num){
+[e :U _int2str ]
+[v _buf `*uc ~T0 @X0 1 r1 ]
+[v _num `i ~T0 @X0 1 r2 ]
+[f ]
+"90
+[v _tmp `uc ~T0 @X0 -> 5 `i a ]
+[v F2195 `i ~T0 @X0 -> 0 `x s ]
+[i F2195
+:U ..
+"91
+-> 1000 `i
+-> 100 `i
+-> 10 `i
+-> 1 `i
+..
+]
+[v _mul `i ~T0 @X0 4  a ]
+[; ;main.c: 90: char tmp[5];
+[; ;main.c: 91: int mul[] = {1000,100,10,1};
+[e = _mul F2195 ]
+[; ;main.c: 92: if(num < 0 )
+"92
+[e $ ! < _num -> 0 `i 248  ]
+[; ;main.c: 93: {
+"93
+{
+[; ;main.c: 94: num = num*(-1);
+"94
+[e = _num * _num -U -> 1 `i ]
+[; ;main.c: 95: tmp[0] = '-';
+"95
+[e = *U + &U _tmp * -> -> -> 0 `i `ui `ux -> -> # *U &U _tmp `ui `ux -> -> 45 `ui `uc ]
+"96
+}
+[; ;main.c: 96: } else {
+[e $U 249  ]
+[e :U 248 ]
+{
+[; ;main.c: 97: tmp[0] = '+';
+"97
+[e = *U + &U _tmp * -> -> -> 0 `i `ui `ux -> -> # *U &U _tmp `ui `ux -> -> 43 `ui `uc ]
+"98
+}
+[e :U 249 ]
+"100
+[v _x `ui ~T0 @X0 1 a ]
+[; ;main.c: 98: }
+[; ;main.c: 100: uint16_t x = num;
+[e = _x -> _num `ui ]
+"101
+[v _y `ui ~T0 @X0 1 a ]
+[; ;main.c: 101: uint16_t y = num;
+[e = _y -> _num `ui ]
+[; ;main.c: 103: for(uint8_t i = 0; i < 4; i++)
+"103
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 4 `i 250  ]
+[e $U 251  ]
+"104
+[e :U 250 ]
+[; ;main.c: 104: {
+{
+[; ;main.c: 105: y = x%mul[i];
+"105
+[e = _y % _x -> *U + &U _mul * -> _i `ux -> -> # *U &U _mul `ui `ux `ui ]
+[; ;main.c: 106: tmp[i+1]= '0' + x/mul[i];
+"106
+[e = *U + &U _tmp * -> -> + -> _i `i -> 1 `i `ui `ux -> -> # *U &U _tmp `ui `ux -> + -> 48 `ui / _x -> *U + &U _mul * -> _i `ux -> -> # *U &U _mul `ui `ux `ui `uc ]
+[; ;main.c: 107: x = y;
+"107
+[e = _x _y ]
+"108
+}
+"103
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 4 `i 250  ]
+[e :U 251 ]
+"108
+}
+[; ;main.c: 108: }
+[; ;main.c: 110: strcpy(buf,tmp);
+"110
+[e ( _strcpy (2 , _buf -> &U _tmp `*Cuc ]
+[; ;main.c: 111: }
+"111
+[e :UE 247 ]
+}
+"113
+[v _itoa1 `(v ~T0 @X0 1 ef2`i`*uc ]
+"114
+{
+[; ;main.c: 113: void itoa1(int n, char s[])
+[; ;main.c: 114: {
+[e :U _itoa1 ]
+"113
+[v _n `i ~T0 @X0 1 r1 ]
+[v _s `*uc ~T0 @X0 1 r2 ]
+"114
+[f ]
+"115
+[v _i `i ~T0 @X0 1 a ]
+[v _sign `i ~T0 @X0 1 a ]
+[; ;main.c: 115: int i, sign;
+[; ;main.c: 117: if ((sign = n) < 0)
+"117
+[e $ ! < = _sign _n -> 0 `i 254  ]
+[; ;main.c: 118: n = -n;
+"118
+[e = _n -U _n ]
+[e :U 254 ]
+[; ;main.c: 119: i = 0;
+"119
+[e = _i -> 0 `i ]
+[; ;main.c: 120: do {
+"120
+[e :U 257 ]
+{
+[; ;main.c: 121: s[i++] = n % 10 + '0';
+"121
+[e = *U + _s * -> ++ _i -> 1 `i `x -> -> # *U _s `i `x -> + -> % _n -> 10 `i `ui -> 48 `ui `uc ]
+"122
+}
+[; ;main.c: 122: } while ((n /= 10) > 0);
+[e $ > =/ _n -> -> 10 `uc `i -> 0 `i 257  ]
+[e :U 256 ]
+[; ;main.c: 123: if (sign < 0)
+"123
+[e $ ! < _sign -> 0 `i 258  ]
+[; ;main.c: 124: s[i++] = '-';
+"124
+[e = *U + _s * -> ++ _i -> 1 `i `x -> -> # *U _s `i `x -> -> 45 `ui `uc ]
+[e :U 258 ]
+[; ;main.c: 125: s[i] = '\0';
+"125
+[e = *U + _s * -> _i `x -> -> # *U _s `i `x -> -> 0 `ui `uc ]
+[; ;main.c: 126: reverse(s);
+"126
+[e ( _reverse (1 _s ]
+[; ;main.c: 127: }
+"127
+[e :UE 253 ]
+}
+"129
+[v _reverse `(v ~T0 @X0 1 ef1`*uc ]
+"130
+{
+[; ;main.c: 129: void reverse(char s[])
+[; ;main.c: 130: {
+[e :U _reverse ]
+"129
+[v _s `*uc ~T0 @X0 1 r1 ]
+"130
+[f ]
+"131
+[v _i `i ~T0 @X0 1 a ]
+[v _j `i ~T0 @X0 1 a ]
+"132
+[v _c `uc ~T0 @X0 1 a ]
+[; ;main.c: 131: int i, j;
+[; ;main.c: 132: char c;
+[; ;main.c: 134: for (i = 0, j = strlen(s)-1; i<j; i++, j--) {
+"134
+{
+[e ; = _i -> 0 `i = _j -> - ( _strlen (1 -> _s `*Cuc -> -> 1 `i `ui `i ]
+[e $U 263  ]
+[e :U 260 ]
+{
+[; ;main.c: 135: c = s[i];
+"135
+[e = _c *U + _s * -> _i `x -> -> # *U _s `i `x ]
+[; ;main.c: 136: s[i] = s[j];
+"136
+[e = *U + _s * -> _i `x -> -> # *U _s `i `x *U + _s * -> _j `x -> -> # *U _s `i `x ]
+[; ;main.c: 137: s[j] = c;
+"137
+[e = *U + _s * -> _j `x -> -> # *U _s `i `x _c ]
+"138
+}
+"134
+[e ; ++ _i -> 1 `i -- _j -> 1 `i ]
+[e :U 263 ]
+[e $ < _i _j 260  ]
+[e :U 261 ]
+"138
+}
+[; ;main.c: 138: }
+[; ;main.c: 139: }
+"139
+[e :UE 259 ]
+}
+[a 3C 73 82 32 61 0 ]
+[a 1C 65 99 99 101 108 88 32 61 32 0 ]
+[a 2C 10 0 ]

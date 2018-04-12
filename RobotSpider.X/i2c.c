@@ -11,7 +11,7 @@
 
 void I2C_Master_Init(){
     SSPCON1 = 0x28;                     //SSP Module at I2C Master
-    SSPCON2 = 0x20;
+    SSPCON2 = 0x0;
     SSPADD = SYSCLK/(4*SIOC_CLK) - 1;   //Set Clock Speed
     TRISC3 = 1;
     TRISC4 = 1;  //Set SSP Pins as Inputs
@@ -21,9 +21,9 @@ void I2C_Master_Init(){
 void I2C_Master_Wait(){
     while((SSPSTAT & 0x04) || (SSPCON2 & 0x1F)) //Transmit is in progress
     {
+        
         UART_send_char('w');
         UART_send_char('\n');
-        __delay_ms(1000);
     }
 }
 
@@ -47,7 +47,7 @@ void I2C_Master_Write(char d){
     SSPBUF = d;             //Write data to SSPBUF
 }
 
-int I2C_Master_Read()
+uint8_t I2C_Master_Read(uint8_t device)
 {
   char temp;
   I2C_Master_Wait();
@@ -55,7 +55,11 @@ int I2C_Master_Read()
   I2C_Master_Wait();
   temp = SSPBUF;      //Read data from SSPBUF
   I2C_Master_Wait();
-  //ACKDT = 0;          //Send NACK because of SSCB
-  //ACKEN = 1;          //Acknowledge sequence
+  
+  /*Check if the slave device is the OV7670*/
+  if(!device){              
+    ACKDT = 0;          //If not send ACK
+    ACKEN = 1;          //Start Acknowledge sequence
+  }
   return temp;
 }

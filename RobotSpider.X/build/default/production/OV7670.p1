@@ -8,16 +8,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p i __delay ]
 "21 OV76070.h
 [v _regWrite `(uc ~T0 @X0 0 ef2`uc`uc ]
-"29 i2c.h
+"30 i2c.h
 [v _I2C_Master_Restart `(v ~T0 @X0 0 ef ]
-"31
-[v _I2C_Master_Write `(v ~T0 @X0 0 ef1`uc ]
-"30
-[v _I2C_Master_Stop `(v ~T0 @X0 0 ef ]
-"28
-[v _I2C_Master_Start `(v ~T0 @X0 0 ef ]
 "32
-[v _I2C_Master_Read `(i ~T0 @X0 0 ef ]
+[v _I2C_Master_Write `(v ~T0 @X0 0 ef1`uc ]
+"31
+[v _I2C_Master_Stop `(v ~T0 @X0 0 ef ]
+"29
+[v _I2C_Master_Start `(v ~T0 @X0 0 ef ]
+"33
+[v _I2C_Master_Read `(uc ~T0 @X0 0 ef1`uc ]
 "29 OV76070.h
 [v _fallingEdge `(uc ~T0 @X0 0 ef1`uc ]
 "557 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f1518.h
@@ -1889,6 +1889,34 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
 [; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
 [; ;stdio.h: 195: extern int printf(const char *, ...);
+[; ;stdint.h: 13: typedef signed char int8_t;
+[; ;stdint.h: 20: typedef signed int int16_t;
+[; ;stdint.h: 28: typedef signed short long int int24_t;
+[; ;stdint.h: 36: typedef signed long int int32_t;
+[; ;stdint.h: 43: typedef unsigned char uint8_t;
+[; ;stdint.h: 49: typedef unsigned int uint16_t;
+[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
+[; ;stdint.h: 63: typedef unsigned long int uint32_t;
+[; ;stdint.h: 71: typedef signed char int_least8_t;
+[; ;stdint.h: 78: typedef signed int int_least16_t;
+[; ;stdint.h: 90: typedef signed short long int int_least24_t;
+[; ;stdint.h: 98: typedef signed long int int_least32_t;
+[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
+[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
+[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
+[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
+[; ;stdint.h: 137: typedef signed char int_fast8_t;
+[; ;stdint.h: 144: typedef signed int int_fast16_t;
+[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
+[; ;stdint.h: 164: typedef signed long int int_fast32_t;
+[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
+[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
+[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
+[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
+[; ;stdint.h: 200: typedef int32_t intmax_t;
+[; ;stdint.h: 205: typedef uint32_t uintmax_t;
+[; ;stdint.h: 210: typedef int16_t intptr_t;
+[; ;stdint.h: 215: typedef uint16_t uintptr_t;
 [; ;stdlib.h: 7: typedef unsigned short wchar_t;
 [; ;stdlib.h: 15: typedef struct {
 [; ;stdlib.h: 16: int rem;
@@ -1939,13 +1967,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdlib.h: 101: extern char * ltoa(char * buf, long val, int base);
 [; ;stdlib.h: 102: extern char * ultoa(char * buf, unsigned long val, int base);
 [; ;stdlib.h: 104: extern char * ftoa(float f, int * status);
-[; ;i2c.h: 26: void I2C_Master_Init();
-[; ;i2c.h: 27: void I2C_Master_Wait();
-[; ;i2c.h: 28: void I2C_Master_Start();
-[; ;i2c.h: 29: void I2C_Master_Restart();
-[; ;i2c.h: 30: void I2C_Master_Stop();
-[; ;i2c.h: 31: void I2C_Master_Write(char);
-[; ;i2c.h: 32: int I2C_Master_Read();
+[; ;i2c.h: 27: void I2C_Master_Init();
+[; ;i2c.h: 28: void I2C_Master_Wait();
+[; ;i2c.h: 29: void I2C_Master_Start();
+[; ;i2c.h: 30: void I2C_Master_Restart();
+[; ;i2c.h: 31: void I2C_Master_Stop();
+[; ;i2c.h: 32: void I2C_Master_Write(char);
+[; ;i2c.h: 33: uint8_t I2C_Master_Read(uint8_t);
 [; ;OV7670_Reg_Values.h: 450: struct regval_list{
 [; ;OV7670_Reg_Values.h: 451: int reg_num;
 [; ;OV7670_Reg_Values.h: 452: int value;
@@ -2916,142 +2944,142 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;OV7670_Reg_Values.h: 611: };
 [; ;OV76070.h: 19: char camInit();
 [; ;OV76070.h: 21: char regWrite(char, char);
-[; ;OV76070.h: 23: char regRead(char);
+[; ;OV76070.h: 23: uint8_t regRead(char);
 [; ;OV76070.h: 25: char writeRegCluster(const struct regval_list reglist[]);
 [; ;OV76070.h: 27: void captureImage(char, char);
 [; ;OV76070.h: 29: char fallingEdge(char);
 [; ;OV76070.h: 31: char risingEdge(char);
 [; ;OV76070.h: 33: void Init_OV7670();
 [; ;OV76070.h: 35: void Init_QVGA();
-"10 OV7670.c
+"11 OV7670.c
 [p x CLKOUTEN=ON ]
-"11
+"12
 [p x FOSC=INTOSC ]
-"15
+"16
 [v _camInit `(uc ~T0 @X0 1 ef ]
 {
-[; ;OV7670.c: 15: char camInit(){
+[; ;OV7670.c: 16: char camInit(){
 [e :U _camInit ]
 [f ]
-[; ;OV7670.c: 16: _delay((unsigned long)((100)*(16000000L/4000.0)));
-"16
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-[; ;OV7670.c: 17: regWrite(0x12, 0x80);
+[; ;OV7670.c: 17: _delay((unsigned long)((100)*(16000000L/4000.0)));
 "17
-[e ( _regWrite (2 , -> -> 18 `i `uc -> -> 128 `i `uc ]
-[; ;OV7670.c: 18: _delay((unsigned long)((100)*(16000000L/4000.0)));
-"18
 [e ( __delay (1 -> * -> -> 100 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-[; ;OV7670.c: 19: regWrite(0x09,0x1);
+[; ;OV7670.c: 18: regWrite(0x12, 0x80);
+"18
+[e ( _regWrite (2 , -> -> 18 `i `uc -> -> 128 `i `uc ]
+[; ;OV7670.c: 19: _delay((unsigned long)((100)*(16000000L/4000.0)));
 "19
-[e ( _regWrite (2 , -> -> 9 `i `uc -> -> 1 `i `uc ]
-[; ;OV7670.c: 20: return 1;
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;OV7670.c: 20: regWrite(0x09,0x1);
 "20
+[e ( _regWrite (2 , -> -> 9 `i `uc -> -> 1 `i `uc ]
+[; ;OV7670.c: 21: return 1;
+"21
 [e ) -> -> 1 `i `uc ]
 [e $UE 238  ]
-[; ;OV7670.c: 21: }
-"21
+[; ;OV7670.c: 22: }
+"22
 [e :UE 238 ]
 }
-"23
+"24
 [v _regWrite `(uc ~T0 @X0 1 ef2`uc`uc ]
 {
-[; ;OV7670.c: 23: char regWrite(char reg, char data){
+[; ;OV7670.c: 24: char regWrite(char reg, char data){
 [e :U _regWrite ]
 [v _reg `uc ~T0 @X0 1 r1 ]
 [v _data `uc ~T0 @X0 1 r2 ]
 [f ]
-[; ;OV7670.c: 24: I2C_Master_Restart();
-"24
-[e ( _I2C_Master_Restart ..  ]
-[; ;OV7670.c: 25: I2C_Master_Write(0x21);
+[; ;OV7670.c: 25: I2C_Master_Restart();
 "25
-[e ( _I2C_Master_Write (1 -> -> 33 `i `uc ]
-[; ;OV7670.c: 26: I2C_Master_Write(reg);
+[e ( _I2C_Master_Restart ..  ]
+[; ;OV7670.c: 26: I2C_Master_Write(0x21);
 "26
-[e ( _I2C_Master_Write (1 _reg ]
-[; ;OV7670.c: 27: I2C_Master_Write(data);
+[e ( _I2C_Master_Write (1 -> -> 33 `i `uc ]
+[; ;OV7670.c: 27: I2C_Master_Write(reg);
 "27
-[e ( _I2C_Master_Write (1 _data ]
-[; ;OV7670.c: 28: I2C_Master_Stop();
+[e ( _I2C_Master_Write (1 _reg ]
+[; ;OV7670.c: 28: I2C_Master_Write(data);
 "28
+[e ( _I2C_Master_Write (1 _data ]
+[; ;OV7670.c: 29: I2C_Master_Stop();
+"29
 [e ( _I2C_Master_Stop ..  ]
-[; ;OV7670.c: 30: return 1;
-"30
+[; ;OV7670.c: 31: return 1;
+"31
 [e ) -> -> 1 `i `uc ]
 [e $UE 239  ]
-[; ;OV7670.c: 31: }
-"31
+[; ;OV7670.c: 32: }
+"32
 [e :UE 239 ]
 }
-"33
+"34
 [v _regRead `(uc ~T0 @X0 1 ef1`uc ]
 {
-[; ;OV7670.c: 33: char regRead(char reg){
+[; ;OV7670.c: 34: uint8_t regRead(char reg){
 [e :U _regRead ]
 [v _reg `uc ~T0 @X0 1 r1 ]
 [f ]
-[; ;OV7670.c: 34: I2C_Master_Start();
-"34
-[e ( _I2C_Master_Start ..  ]
-[; ;OV7670.c: 35: I2C_Master_Write(0x21);
+[; ;OV7670.c: 35: I2C_Master_Start();
 "35
-[e ( _I2C_Master_Write (1 -> -> 33 `i `uc ]
-[; ;OV7670.c: 36: I2C_Master_Write(reg);
+[e ( _I2C_Master_Start ..  ]
+[; ;OV7670.c: 36: I2C_Master_Write(0x21);
 "36
-[e ( _I2C_Master_Write (1 _reg ]
-[; ;OV7670.c: 37: I2C_Master_Stop();
-"37
-[e ( _I2C_Master_Stop ..  ]
-[; ;OV7670.c: 39: _delay((unsigned long)((1)*(16000000L/4000.0)));
-"39
-[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-[; ;OV7670.c: 41: I2C_Master_Restart();
-"41
-[e ( _I2C_Master_Restart ..  ]
-[; ;OV7670.c: 42: I2C_Master_Write(0x21);
-"42
 [e ( _I2C_Master_Write (1 -> -> 33 `i `uc ]
-[; ;OV7670.c: 43: _delay((unsigned long)((10)*(16000000L/4000.0)));
-"43
-[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-"44
-[v _data `uc ~T0 @X0 1 a ]
-[; ;OV7670.c: 44: char data = I2C_Master_Read();
-[e = _data -> ( _I2C_Master_Read ..  `uc ]
-[; ;OV7670.c: 45: I2C_Master_Stop();
-"45
+[; ;OV7670.c: 37: I2C_Master_Write(reg);
+"37
+[e ( _I2C_Master_Write (1 _reg ]
+[; ;OV7670.c: 38: I2C_Master_Stop();
+"38
 [e ( _I2C_Master_Stop ..  ]
-[; ;OV7670.c: 46: _delay((unsigned long)((1)*(16000000L/4000.0)));
-"46
+[; ;OV7670.c: 40: _delay((unsigned long)((1)*(16000000L/4000.0)));
+"40
 [e ( __delay (1 -> * -> -> 1 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-[; ;OV7670.c: 48: return data;
-"48
+[; ;OV7670.c: 42: I2C_Master_Restart();
+"42
+[e ( _I2C_Master_Restart ..  ]
+[; ;OV7670.c: 43: I2C_Master_Write(0x21);
+"43
+[e ( _I2C_Master_Write (1 -> -> 33 `i `uc ]
+[; ;OV7670.c: 44: _delay((unsigned long)((10)*(16000000L/4000.0)));
+"44
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+"45
+[v _data `uc ~T0 @X0 1 a ]
+[; ;OV7670.c: 45: uint8_t data = I2C_Master_Read(1);
+[e = _data ( _I2C_Master_Read (1 -> -> 1 `i `uc ]
+[; ;OV7670.c: 46: I2C_Master_Stop();
+"46
+[e ( _I2C_Master_Stop ..  ]
+[; ;OV7670.c: 47: _delay((unsigned long)((1)*(16000000L/4000.0)));
+"47
+[e ( __delay (1 -> * -> -> 1 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;OV7670.c: 49: return data;
+"49
 [e ) _data ]
 [e $UE 240  ]
-[; ;OV7670.c: 49: }
-"49
+[; ;OV7670.c: 50: }
+"50
 [e :UE 240 ]
 }
-"51
+"52
 [v _captureImage `(v ~T0 @X0 1 ef2`uc`uc ]
 {
-[; ;OV7670.c: 51: void captureImage(char w, char h){
+[; ;OV7670.c: 52: void captureImage(char w, char h){
 [e :U _captureImage ]
 [v _w `uc ~T0 @X0 1 r1 ]
 [v _h `uc ~T0 @X0 1 r2 ]
 [f ]
-[; ;OV7670.c: 52: if(fallingEdge(PORTCbits.RC1));
-"52
+[; ;OV7670.c: 53: if(fallingEdge(PORTCbits.RC1));
+"53
 [e $ ! != -> ( _fallingEdge (1 . . _PORTCbits 0 1 `i -> -> -> 0 `i `uc `i 242  ]
 [e :U 242 ]
-[; ;OV7670.c: 53: while(!(risingEdge(PORTCbits.RC1))){
-"53
+[; ;OV7670.c: 54: while(!(risingEdge(PORTCbits.RC1))){
+"54
 [e $U 243  ]
 [e :U 244 ]
 {
-[; ;OV7670.c: 54: for(int i = 0; i < 240; i++ ){
-"54
+[; ;OV7670.c: 55: for(int i = 0; i < 240; i++ ){
+"55
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
@@ -3059,11 +3087,11 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 247  ]
 [e :U 246 ]
 {
-[; ;OV7670.c: 55: if(risingEdge(PORTCbits.RC0))
-"55
-[e $ ! != -> ( _risingEdge (1 . . _PORTCbits 0 0 `i -> -> -> 0 `i `uc `i 249  ]
-[; ;OV7670.c: 56: for(int j = 0;j < 320; j++ ){
+[; ;OV7670.c: 56: if(risingEdge(PORTCbits.RC0))
 "56
+[e $ ! != -> ( _risingEdge (1 . . _PORTCbits 0 0 `i -> -> -> 0 `i `uc `i 249  ]
+[; ;OV7670.c: 57: for(int j = 0;j < 320; j++ ){
+"57
 {
 [v _j `i ~T0 @X0 1 a ]
 [e = _j -> 0 `i ]
@@ -3071,203 +3099,203 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $U 251  ]
 [e :U 250 ]
 {
-[; ;OV7670.c: 57: if(risingEdge(PORTCbits.RC2));
-"57
+[; ;OV7670.c: 58: if(risingEdge(PORTCbits.RC2));
+"58
 [e $ ! != -> ( _risingEdge (1 . . _PORTCbits 0 2 `i -> -> -> 0 `i `uc `i 253  ]
 [e :U 253 ]
-[; ;OV7670.c: 59: UART_send_char(LATB);
-"59
-[e ( _UART_send_char (1 _LATB ]
+[; ;OV7670.c: 60: UART_send_char(LATB);
 "60
+[e ( _UART_send_char (1 _LATB ]
+"61
 }
-"56
+"57
 [e ++ _j -> 1 `i ]
 [e $ < _j -> 320 `i 250  ]
 [e :U 251 ]
-"60
+"61
 }
 [e :U 249 ]
-[; ;OV7670.c: 60: }
-[; ;OV7670.c: 61: if(fallingEdge(PORTCbits.RC0));
-"61
+[; ;OV7670.c: 61: }
+[; ;OV7670.c: 62: if(fallingEdge(PORTCbits.RC0));
+"62
 [e $ ! != -> ( _fallingEdge (1 . . _PORTCbits 0 0 `i -> -> -> 0 `i `uc `i 254  ]
 [e :U 254 ]
-"62
+"63
 }
-"54
+"55
 [e ++ _i -> 1 `i ]
 [e $ < _i -> 240 `i 246  ]
 [e :U 247 ]
-"62
-}
 "63
 }
+"64
+}
 [e :U 243 ]
-"53
+"54
 [e $ ! != -> ( _risingEdge (1 . . _PORTCbits 0 1 `i -> -> -> 0 `i `uc `i 244  ]
 [e :U 245 ]
-[; ;OV7670.c: 62: }
 [; ;OV7670.c: 63: }
 [; ;OV7670.c: 64: }
-"64
+[; ;OV7670.c: 65: }
+"65
 [e :UE 241 ]
 }
-"66
+"67
 [v _fallingEdge `(uc ~T0 @X0 1 ef1`uc ]
 {
-[; ;OV7670.c: 66: char fallingEdge(char pin){
+[; ;OV7670.c: 67: char fallingEdge(char pin){
 [e :U _fallingEdge ]
 [v _pin `uc ~T0 @X0 1 r1 ]
 [f ]
-[; ;OV7670.c: 67: while(!(pin & 8));
-"67
+[; ;OV7670.c: 68: while(!(pin & 8));
+"68
 [e $U 256  ]
 [e :U 257 ]
 [e :U 256 ]
 [e $ ! != & -> _pin `i -> 8 `i -> 0 `i 257  ]
 [e :U 258 ]
-[; ;OV7670.c: 68: while(pin & 8);
-"68
+[; ;OV7670.c: 69: while(pin & 8);
+"69
 [e $U 259  ]
 [e :U 260 ]
 [e :U 259 ]
 [e $ != & -> _pin `i -> 8 `i -> 0 `i 260  ]
 [e :U 261 ]
-[; ;OV7670.c: 69: return 1;
-"69
+[; ;OV7670.c: 70: return 1;
+"70
 [e ) -> -> 1 `i `uc ]
 [e $UE 255  ]
-[; ;OV7670.c: 70: }
-"70
+[; ;OV7670.c: 71: }
+"71
 [e :UE 255 ]
 }
-"72
+"73
 [v _risingEdge `(uc ~T0 @X0 1 ef1`uc ]
 {
-[; ;OV7670.c: 72: char risingEdge(char pin){
+[; ;OV7670.c: 73: char risingEdge(char pin){
 [e :U _risingEdge ]
 [v _pin `uc ~T0 @X0 1 r1 ]
 [f ]
-[; ;OV7670.c: 73: while(pin & 8);
-"73
+[; ;OV7670.c: 74: while(pin & 8);
+"74
 [e $U 263  ]
 [e :U 264 ]
 [e :U 263 ]
 [e $ != & -> _pin `i -> 8 `i -> 0 `i 264  ]
 [e :U 265 ]
-[; ;OV7670.c: 74: while(!(pin & 8));
-"74
+[; ;OV7670.c: 75: while(!(pin & 8));
+"75
 [e $U 266  ]
 [e :U 267 ]
 [e :U 266 ]
 [e $ ! != & -> _pin `i -> 8 `i -> 0 `i 267  ]
 [e :U 268 ]
-[; ;OV7670.c: 75: return 1;
-"75
+[; ;OV7670.c: 76: return 1;
+"76
 [e ) -> -> 1 `i `uc ]
 [e $UE 262  ]
-[; ;OV7670.c: 76: }
-"76
+[; ;OV7670.c: 77: }
+"77
 [e :UE 262 ]
 }
-"78
+"79
 [v _Init_OV7670 `(v ~T0 @X0 1 ef ]
 {
-[; ;OV7670.c: 78: void Init_OV7670(){
+[; ;OV7670.c: 79: void Init_OV7670(){
 [e :U _Init_OV7670 ]
 [f ]
-[; ;OV7670.c: 80: regWrite(0x12,0x80);
-"80
-[e ( _regWrite (2 , -> -> 18 `i `uc -> -> 128 `i `uc ]
-[; ;OV7670.c: 81: _delay((unsigned long)((100)*(16000000L/4000.0)));
+[; ;OV7670.c: 81: regWrite(0x12,0x80);
 "81
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
-[; ;OV7670.c: 82: regWrite(0x3A, 0x04);
+[e ( _regWrite (2 , -> -> 18 `i `uc -> -> 128 `i `uc ]
+[; ;OV7670.c: 82: _delay((unsigned long)((100)*(16000000L/4000.0)));
 "82
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 16000000 `l `d .4000.0 `ul ]
+[; ;OV7670.c: 83: regWrite(0x3A, 0x04);
+"83
 [e ( _regWrite (2 , -> -> 58 `i `uc -> -> 4 `i `uc ]
-[; ;OV7670.c: 84: regWrite(0x13, 0xC0);
-"84
-[e ( _regWrite (2 , -> -> 19 `i `uc -> -> 192 `i `uc ]
-[; ;OV7670.c: 85: regWrite(0x00, 0x00);
+[; ;OV7670.c: 85: regWrite(0x13, 0xC0);
 "85
-[e ( _regWrite (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
-[; ;OV7670.c: 86: regWrite(0x10, 0x00);
+[e ( _regWrite (2 , -> -> 19 `i `uc -> -> 192 `i `uc ]
+[; ;OV7670.c: 86: regWrite(0x00, 0x00);
 "86
-[e ( _regWrite (2 , -> -> 16 `i `uc -> -> 0 `i `uc ]
-[; ;OV7670.c: 87: regWrite(0x0d, 0x40);
+[e ( _regWrite (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
+[; ;OV7670.c: 87: regWrite(0x10, 0x00);
 "87
-[e ( _regWrite (2 , -> -> 13 `i `uc -> -> 64 `i `uc ]
-[; ;OV7670.c: 88: regWrite(0x14, 0x18);
+[e ( _regWrite (2 , -> -> 16 `i `uc -> -> 0 `i `uc ]
+[; ;OV7670.c: 88: regWrite(0x0d, 0x40);
 "88
-[e ( _regWrite (2 , -> -> 20 `i `uc -> -> 24 `i `uc ]
-[; ;OV7670.c: 89: regWrite(0x24, 0x95);
+[e ( _regWrite (2 , -> -> 13 `i `uc -> -> 64 `i `uc ]
+[; ;OV7670.c: 89: regWrite(0x14, 0x18);
 "89
-[e ( _regWrite (2 , -> -> 36 `i `uc -> -> 149 `i `uc ]
-[; ;OV7670.c: 90: regWrite(0x25, 0x33);
+[e ( _regWrite (2 , -> -> 20 `i `uc -> -> 24 `i `uc ]
+[; ;OV7670.c: 90: regWrite(0x24, 0x95);
 "90
-[e ( _regWrite (2 , -> -> 37 `i `uc -> -> 51 `i `uc ]
-[; ;OV7670.c: 91: regWrite(0x13, 0xC5);
+[e ( _regWrite (2 , -> -> 36 `i `uc -> -> 149 `i `uc ]
+[; ;OV7670.c: 91: regWrite(0x25, 0x33);
 "91
-[e ( _regWrite (2 , -> -> 19 `i `uc -> -> 197 `i `uc ]
-[; ;OV7670.c: 92: regWrite(0x6a, 0x40);
+[e ( _regWrite (2 , -> -> 37 `i `uc -> -> 51 `i `uc ]
+[; ;OV7670.c: 92: regWrite(0x13, 0xC5);
 "92
-[e ( _regWrite (2 , -> -> 106 `i `uc -> -> 64 `i `uc ]
-[; ;OV7670.c: 93: regWrite(0x01, 0x40);
+[e ( _regWrite (2 , -> -> 19 `i `uc -> -> 197 `i `uc ]
+[; ;OV7670.c: 93: regWrite(0x6a, 0x40);
 "93
-[e ( _regWrite (2 , -> -> 1 `i `uc -> -> 64 `i `uc ]
-[; ;OV7670.c: 94: regWrite(0x02, 0x60);
+[e ( _regWrite (2 , -> -> 106 `i `uc -> -> 64 `i `uc ]
+[; ;OV7670.c: 94: regWrite(0x01, 0x40);
 "94
-[e ( _regWrite (2 , -> -> 2 `i `uc -> -> 96 `i `uc ]
-[; ;OV7670.c: 95: regWrite(0x13, 0xC7);
+[e ( _regWrite (2 , -> -> 1 `i `uc -> -> 64 `i `uc ]
+[; ;OV7670.c: 95: regWrite(0x02, 0x60);
 "95
-[e ( _regWrite (2 , -> -> 19 `i `uc -> -> 199 `i `uc ]
-[; ;OV7670.c: 96: regWrite(0x41, 0x08);
+[e ( _regWrite (2 , -> -> 2 `i `uc -> -> 96 `i `uc ]
+[; ;OV7670.c: 96: regWrite(0x13, 0xC7);
 "96
-[e ( _regWrite (2 , -> -> 65 `i `uc -> -> 8 `i `uc ]
-[; ;OV7670.c: 97: regWrite(0x15, 0x20);
+[e ( _regWrite (2 , -> -> 19 `i `uc -> -> 199 `i `uc ]
+[; ;OV7670.c: 97: regWrite(0x41, 0x08);
 "97
-[e ( _regWrite (2 , -> -> 21 `i `uc -> -> 32 `i `uc ]
-[; ;OV7670.c: 98: }
+[e ( _regWrite (2 , -> -> 65 `i `uc -> -> 8 `i `uc ]
+[; ;OV7670.c: 98: regWrite(0x15, 0x20);
 "98
+[e ( _regWrite (2 , -> -> 21 `i `uc -> -> 32 `i `uc ]
+[; ;OV7670.c: 99: }
+"99
 [e :UE 269 ]
 }
-"100
+"101
 [v _Init_QVGA `(v ~T0 @X0 1 ef ]
 {
-[; ;OV7670.c: 100: void Init_QVGA(){
+[; ;OV7670.c: 101: void Init_QVGA(){
 [e :U _Init_QVGA ]
 [f ]
-[; ;OV7670.c: 101: regWrite(0x0c, 0x04);
-"101
-[e ( _regWrite (2 , -> -> 12 `i `uc -> -> 4 `i `uc ]
-[; ;OV7670.c: 102: regWrite(0x3e, 0x19);
+[; ;OV7670.c: 102: regWrite(0x0c, 0x04);
 "102
-[e ( _regWrite (2 , -> -> 62 `i `uc -> -> 25 `i `uc ]
-[; ;OV7670.c: 103: regWrite(0x72, 0x11);
+[e ( _regWrite (2 , -> -> 12 `i `uc -> -> 4 `i `uc ]
+[; ;OV7670.c: 103: regWrite(0x3e, 0x19);
 "103
-[e ( _regWrite (2 , -> -> 114 `i `uc -> -> 17 `i `uc ]
-[; ;OV7670.c: 104: regWrite(0x73, 0xF1);
+[e ( _regWrite (2 , -> -> 62 `i `uc -> -> 25 `i `uc ]
+[; ;OV7670.c: 104: regWrite(0x72, 0x11);
 "104
-[e ( _regWrite (2 , -> -> 115 `i `uc -> -> 241 `i `uc ]
-[; ;OV7670.c: 105: regWrite(0x17, 0x16);
+[e ( _regWrite (2 , -> -> 114 `i `uc -> -> 17 `i `uc ]
+[; ;OV7670.c: 105: regWrite(0x73, 0xF1);
 "105
-[e ( _regWrite (2 , -> -> 23 `i `uc -> -> 22 `i `uc ]
-[; ;OV7670.c: 106: regWrite(0x18, 0x04);
+[e ( _regWrite (2 , -> -> 115 `i `uc -> -> 241 `i `uc ]
+[; ;OV7670.c: 106: regWrite(0x17, 0x16);
 "106
-[e ( _regWrite (2 , -> -> 24 `i `uc -> -> 4 `i `uc ]
-[; ;OV7670.c: 107: regWrite(0x32, 0xA4);
+[e ( _regWrite (2 , -> -> 23 `i `uc -> -> 22 `i `uc ]
+[; ;OV7670.c: 107: regWrite(0x18, 0x04);
 "107
-[e ( _regWrite (2 , -> -> 50 `i `uc -> -> 164 `i `uc ]
-[; ;OV7670.c: 108: regWrite(0x19, 0x02);
+[e ( _regWrite (2 , -> -> 24 `i `uc -> -> 4 `i `uc ]
+[; ;OV7670.c: 108: regWrite(0x32, 0xA4);
 "108
-[e ( _regWrite (2 , -> -> 25 `i `uc -> -> 2 `i `uc ]
-[; ;OV7670.c: 109: regWrite(0x1a, 0x7A);
+[e ( _regWrite (2 , -> -> 50 `i `uc -> -> 164 `i `uc ]
+[; ;OV7670.c: 109: regWrite(0x19, 0x02);
 "109
-[e ( _regWrite (2 , -> -> 26 `i `uc -> -> 122 `i `uc ]
-[; ;OV7670.c: 110: regWrite(0x03, 0x0A);
+[e ( _regWrite (2 , -> -> 25 `i `uc -> -> 2 `i `uc ]
+[; ;OV7670.c: 110: regWrite(0x1a, 0x7A);
 "110
-[e ( _regWrite (2 , -> -> 3 `i `uc -> -> 10 `i `uc ]
-[; ;OV7670.c: 111: }
+[e ( _regWrite (2 , -> -> 26 `i `uc -> -> 122 `i `uc ]
+[; ;OV7670.c: 111: regWrite(0x03, 0x0A);
 "111
+[e ( _regWrite (2 , -> -> 3 `i `uc -> -> 10 `i `uc ]
+[; ;OV7670.c: 112: }
+"112
 [e :UE 270 ]
 }

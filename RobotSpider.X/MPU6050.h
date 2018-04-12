@@ -7,27 +7,28 @@
 #include <xc.h>
 #include "i2c.h"
 #include "MPU6050_Reg_Values.h"
+#include <stdint.h>
 
 typedef struct
 {
  struct
  {
-  signed int X;
-  signed int Y;
-  signed int Z;
+  int16_t X;
+  int16_t Y;
+  int16_t Z;
  }Accel;
- signed int Temperature;
+ int16_t Temperature;
  struct
  {
-  signed int X;
-  signed int Y;
-  signed int Z;
+  int16_t X;
+  int16_t Y;
+  int16_t Z;
  }Gyro;
 }MPU6050;
 
 void MPU6050_Init();
 
-int MPU6050_Read();
+void MPU6050_Read(MPU6050* );
 
 
 #endif	/*MPU6050_H*/

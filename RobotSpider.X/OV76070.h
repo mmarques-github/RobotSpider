@@ -20,7 +20,7 @@ char camInit();
 
 char regWrite(char, char);
 
-char regRead(char);
+uint8_t regRead(char);
 
 char writeRegCluster(const struct regval_list reglist[]);
 
