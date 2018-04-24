@@ -28,10 +28,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-<<<<<<< HEAD
-=======
 #include <xc.h>
->>>>>>> parent of 9a4dca4... Int2Str Coversion
 #include "adc.h"
 #include "MPU6050.h"
 #include <xc.h>
@@ -43,7 +40,6 @@
 #define CAM     0
 #define _XTAL_FREQ 16000000L
 //int strlen(char[]);
-=======
 #pragma config CLKOUTEN = 0      //Output System Clock on pin
 #pragma config FOSC = INTOSC   
 #define _XTAL_FREQ 16000000L
@@ -61,12 +57,9 @@ char risingEdge(char pin);
 void Init_OV7670();
 void Init_QVGA();
 
->>>>>>> parent of 9a4dca4... Int2Str Coversion
-
 
 void MPU6050_DeviceDriverTest();
 int main(void){
-<<<<<<< HEAD
     
     /*Setting up the ports*/
     
@@ -82,7 +75,6 @@ int main(void){
     
     
     /*Accel/Gyro Setup*/
-=======
     ANSELA = 0;              //Turn Off Analog Inputs;
     ANSELC= 0;
     OSCCONbits.IRCF = 0xf;  //Internal Oscillator Frequency = 16 MHz
@@ -94,8 +86,7 @@ int main(void){
     TRISA0 = 1;         //Image capture switch;
     TRISC3 = 1;
     TRISC4 = 1;
-    
->>>>>>> parent of 9a4dca4... Int2Str Coversion
+
     MPU6050_Init();
     ADC_Init();
 	I2C_Master_Init();
@@ -107,7 +98,6 @@ int main(void){
     //    PORTAbits.RA0 = 1;          //Turn LED ON;
     //}
     while(1){
-<<<<<<< HEAD
         if(1){
             I2C_Master_Start();
             I2C_Master_Write( MPU6050_ADDRESS );
@@ -122,26 +112,12 @@ int main(void){
         if(0){
             MPU6050_DeviceDriverTest();
         }
-=======
-        if(PORTAbits.RA0 != 0){
-            char t = MPU6050_Read();
-           
-            UART_send_string("REG_COM7 = ");
-            UART_send_char(t);
-            UART_send_char('\n');
-        }else{
-            UART_send_string("IR =");
-            UART_send_char(ADC_Read());    
-            UART_send_char('\n');
-        }
         
         __delay_ms(1000);
->>>>>>> parent of 9a4dca4... Int2Str Coversion
     }
     return 0;
 }
 
-<<<<<<< HEAD
 void MPU6050_DeviceDriverTest(){
     MPU6050 *TestRun;
     MPU6050_Read(TestRun);
@@ -187,5 +163,3 @@ void MPU6050_DeviceDriverTest(){
 
     __delay_ms(1000);
 }
-=======
->>>>>>> parent of 9a4dca4... Int2Str Coversion
