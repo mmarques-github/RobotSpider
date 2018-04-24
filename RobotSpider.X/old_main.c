@@ -7,17 +7,15 @@
 #include <stdlib.h>
 #include "adc.h"
 #include "MPU6050.h"
-
-#include <p30F3012.h>
 #include <xc.h>
 
-#define FCY 120000000L
 #define WIDTH   240
 #define LENGTH  320
 #define DEVICE  1
 #define CAM     0
+_FOSC(CSW_FSCM_OFF & FRC & XT_PLL16);
 #define _XTAL_FREQ 120000000L
-#pragma config FOSC=FRC
+
 //int strlen(char[]);
 
 
@@ -38,6 +36,7 @@ int main(void){
     
     
     /*Accel/Gyro Setup*/
+    MPU6050 *Sensor;
     MPU6050_Init();
     
     /*IR sensors setup*/
@@ -64,7 +63,7 @@ int main(void){
 
 void MPU6050_DeviceDriverTest(){
     MPU6050 *TestRun;
-    MPU6050_Read(TestRun);
+    MPU6050_Read(&TestRun);
     char buf[10];
     
     

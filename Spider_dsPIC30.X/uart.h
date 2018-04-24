@@ -8,7 +8,6 @@
 #ifndef UART_H
 #define UART_H
 
-#include <xc.h>
 #include <string.h>
 #include "i2c.h"
 

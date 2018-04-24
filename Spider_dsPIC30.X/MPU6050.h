@@ -6,7 +6,6 @@
 
 #include <xc.h>
 #include "i2c.h"
-#include <p30F3012.h>
 #include "MPU6050_Reg_Values.h"
 #include <stdint.h>
 

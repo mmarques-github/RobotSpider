@@ -14,12 +14,11 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <xc.h>
-#include <p30F3012.h>
 
 //General Parameters
-#define SYSCLK 120000000L
-#define _XTAL_FREQ 120000000L
-#define SCL_CLK 400000L
+#define SYSCLK 16000000L
+#define _XTAL_FREQ 16000000L
+#define SIOC_CLK 400000L
 /*
  * 
  */

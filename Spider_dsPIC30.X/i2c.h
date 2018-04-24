@@ -14,7 +14,8 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <xc.h>
-#include <p30F3012.h>
+#include <libpic30.h>
+
 
 //General Parameters
 #define SYSCLK 120000000L

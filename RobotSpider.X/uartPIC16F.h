@@ -5,8 +5,8 @@
  * Created on March 29, 2018, 11:54 PM
  */
 
-#ifndef UART_H
-#define UART_H
+#ifndef XC_HEADER_TEMPLATE_H
+#define	XC_HEADER_TEMPLATE_H
 
 #include <xc.h>
 #include <string.h>
@@ -20,4 +20,4 @@ void UART_send_string(char *);
 void int2str(int, char[]);
 void reverse(char[]);
 
-#endif /*UART_H*/
+#endif /*HC_HEADER_TEMPLATE_H*/
