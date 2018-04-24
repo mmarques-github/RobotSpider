@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <executable name="dist/default/production\RobotSpider.X.production.hex">
+    <memory name="program">
+      <units>words</units>
+      <length>16384</length>
+<<<<<<< HEAD
+      <used>1207</used>
+      <free>15177</free>
+=======
+      <used>1573</used>
+      <free>14811</free>
+>>>>>>> parent of 9a4dca4... Int2Str Coversion
+    </memory>
+    <memory name="data">
+      <units>bytes</units>
+      <length>1024</length>
+<<<<<<< HEAD
+      <used>43</used>
+      <free>981</free>
+=======
+      <used>33</used>
+      <free>991</free>
+>>>>>>> parent of 9a4dca4... Int2Str Coversion
+    </memory>
+  </executable>
+</project>

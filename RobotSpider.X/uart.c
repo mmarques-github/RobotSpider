@@ -1,30 +1,35 @@
 #include "uart.h"
+#define SYSCLK 16000000L
 #define Baud_rate 9600
 
 //***Initializing UART module for PIC16F877A***//
 void Initialize_UART(void)
 {
     //****Setting I/O pins for UART****//
-    TRISC &= 0xDFFF; // TX Pin set as output
-    TRISC |= 0x4000; ; // RX Pin set as input
+    TRISC6 = 0; // TX Pin set as output
+    TRISC7 = 1; // RX Pin set as input
     //________I/O pins set __________//
     
     /**Initialize SPBRG register for required 
     baud rate and set BRGH for fast baud_rate**/
-    U1BRG = ((SYSCLK/16)/Baud_rate) - 1;
+    SPBRG = ((SYSCLK/16)/Baud_rate) - 1;
+    BRGH  = 1;  // for high baud_rate
     //_________End of baud_rate setting_________//
     
-    /*Enable Alternative I/O Ports*/
-    U1MODEbits.ALTIO = 1; 
+    //****Enable Asynchronous serial port*******//
+    SYNC  = 0;    // Asynchronous
+    SPEN  = 1;    // Enable serial port pins
+    //_____Asynchronous serial port enabled_______//
+
+    //**Lets prepare for transmission & reception**//
+    TXEN  = 1;    // enable transmission
+    CREN  = 1;    // enable reception
+    //__UART module up and ready for transmission and reception__//
     
-    /*Setting up the number of Data and Stop Bits*/
-    U1MODEbits.PDSEL = 0x0;
-    U1MODEbits.STSEL = 0x0;
-    
-    
-    /*Enable UART*/
-    U1MODEbits.UARTEN = 1;
-    U1STAbits.UTXEN = 1;  
+    //**Select 8-bit mode**//  
+    TX9   = 0;    // 8-bit reception selected
+    RX9   = 0;    // 8-bit reception mode selected
+    //__8-bit mode selected__//     
 }
 //________UART module Initialized__________//
 
@@ -33,8 +38,8 @@ void Initialize_UART(void)
 //**Function to send one byte of date to UART**//
 void UART_send_char(char bt)  
 {
-    while(!IFS0bits.U1TXIF);  // hold the program till TX buffer is free
-    U1TXREG = bt; //Load the transmitter buffer with the received value
+    while(!TXIF);  // hold the program till TX buffer is free
+    TXREG = bt; //Load the transmitter buffer with the received value
 }
 //_____________End of function________________//
 
@@ -43,14 +48,15 @@ void UART_send_char(char bt)
 //**Function to get one byte of date from UART**//
 char UART_get_char()   
 {
-    if(U1STAbits.OERR) // check for Error 
+    if(OERR) // check for Error 
     {
-        U1STAbits.OERR = 0; //If error -> Reset 
+        CREN = 0; //If error -> Reset 
+        CREN = 1; //If error -> Reset 
     }
     
-    while(!IFS0bits.U1RXIF);  // hold the program till RX buffer is free
+    while(!RCIF);  // hold the program till RX buffer is free
     
-    return U1RXREG; //receive the value and send it to main function
+    return RCREG; //receive the value and send it to main function
 }
 //_____________End of function________________//
 

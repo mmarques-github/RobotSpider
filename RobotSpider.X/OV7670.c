@@ -7,7 +7,6 @@
 #define SYSCLK 16000000L
 #define WIDTH   240
 #define LENGTH  320
-#define OV7670  1
 #pragma config CLKOUTEN = 0      //Output System Clock on pin
 #pragma config FOSC = INTOSC   
 #define _XTAL_FREQ 16000000L
@@ -31,7 +30,7 @@ char regWrite(char reg, char data){
     return 1;
 }
 
-uint8_t regRead(char reg){
+char regRead(char reg){
 	I2C_Master_Start();
 	I2C_Master_Write(camAddr_WR);
 	I2C_Master_Write(reg);
@@ -42,7 +41,7 @@ uint8_t regRead(char reg){
 	I2C_Master_Restart();
     I2C_Master_Write(camAddr_RD);
     __delay_ms(10);
-	uint8_t data = I2C_Master_Read(OV7670);
+	char data = I2C_Master_Read();
 	I2C_Master_Stop();
     __delay_ms(1);
 

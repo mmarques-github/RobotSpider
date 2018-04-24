@@ -1,0 +1,454 @@
+[p LITE_MODE AUTOSTATIC PIC14 PIC14E ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F1518 ]
+[d frameptr 6 ]
+<<<<<<< HEAD
+=======
+"5 C:\Users\Marcelo\Documents\GitHub\RobotSpider\RobotSpider.X\adc.c
+[v _ADC_Init ADC_Init `(v  1 e 1 0 ]
+"14
+[v _ADC_Read ADC_Read `(i  1 e 2 0 ]
+>>>>>>> parent of 9a4dca4... Int2Str Coversion
+"6 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+<<<<<<< HEAD
+"4 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\strlen.c
+[v _strlen strlen `(ui  1 e 2 0 ]
+=======
+>>>>>>> parent of 9a4dca4... Int2Str Coversion
+"12 C:\Users\Marcelo\Documents\GitHub\RobotSpider\RobotSpider.X\i2c.c
+[v _I2C_Master_Init I2C_Master_Init `(v  1 e 1 0 ]
+"21
+[v _I2C_Master_Wait I2C_Master_Wait `(v  1 e 1 0 ]
+"25
+[v _I2C_Master_Start I2C_Master_Start `(v  1 e 1 0 ]
+"30
+[v _I2C_Master_Restart I2C_Master_Restart `(v  1 e 1 0 ]
+"35
+[v _I2C_Master_Stop I2C_Master_Stop `(v  1 e 1 0 ]
+"40
+[v _I2C_Master_Write I2C_Master_Write `(v  1 e 1 0 ]
+<<<<<<< HEAD
+"45
+[v _I2C_Master_Read I2C_Master_Read `(uc  1 e 1 0 ]
+"22 C:\Users\Marcelo\Documents\GitHub\RobotSpider\RobotSpider.X\main.c
+[v _main main `(i  1 e 2 0 ]
+"62
+[v _MPU6050_DeviceDriverTest MPU6050_DeviceDriverTest `(v  1 e 1 0 ]
+"5 C:\Users\Marcelo\Documents\GitHub\RobotSpider\RobotSpider.X\MPU6050.c
+[v _MPU6050_Init MPU6050_Init `(v  1 e 1 0 ]
+"22
+[v _MPU6050_Read MPU6050_Read `(v  1 e 1 0 ]
+=======
+"50
+[v _I2C_Master_Read I2C_Master_Read `(i  1 e 2 0 ]
+"41 C:\Users\Marcelo\Documents\GitHub\RobotSpider\RobotSpider.X\main.c
+[v _main main `(i  1 e 2 0 ]
+"3 C:\Users\Marcelo\Documents\GitHub\RobotSpider\RobotSpider.X\MPU6050.c
+[v _MPU6050_Init MPU6050_Init `(v  1 e 1 0 ]
+"20
+[v _MPU6050_Read MPU6050_Read `(i  1 e 2 0 ]
+"15 C:\Users\Marcelo\Documents\GitHub\RobotSpider\RobotSpider.X\OV7670.c
+[v _camInit camInit `(uc  1 e 1 0 ]
+"23
+[v _regWrite regWrite `(uc  1 e 1 0 ]
+"66
+[v _fallingEdge fallingEdge `(uc  1 e 1 0 ]
+"72
+[v _risingEdge risingEdge `(uc  1 e 1 0 ]
+"78
+[v _Init_OV7670 Init_OV7670 `(v  1 e 1 0 ]
+"100
+[v _Init_QVGA Init_QVGA `(v  1 e 1 0 ]
+>>>>>>> parent of 9a4dca4... Int2Str Coversion
+"6 C:\Users\Marcelo\Documents\GitHub\RobotSpider\RobotSpider.X\uart.c
+[v _Initialize_UART Initialize_UART `(v  1 e 1 0 ]
+"39
+[v _UART_send_char UART_send_char `(v  1 e 1 0 ]
+"66
+[v _UART_send_string UART_send_string `(v  1 e 1 0 ]
+<<<<<<< HEAD
+"73
+[v _int2str int2str `(v  1 e 1 0 ]
+"89
+[v _reverse reverse `(v  1 e 1 0 ]
+"2520 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f1518.h
+=======
+[s S86 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 RA2 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 RA4 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+`uc 1 RA6 1 0 :1:6 
+`uc 1 RA7 1 0 :1:7 
+]
+"444 C:\Program Files (x86)\Microchip\xc8\v1.45\include\pic16f1518.h
+[u S95 . 1 `S86 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES95  1 e 1 @12 ]
+[s S196 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 RC3 1 0 :1:3 
+`uc 1 RC4 1 0 :1:4 
+`uc 1 RC5 1 0 :1:5 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
+]
+"568
+[u S205 . 1 `S196 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES205  1 e 1 @14 ]
+"1112
+[v _TRISB TRISB `VEuc  1 e 1 @141 ]
+"1174
+[v _TRISC TRISC `VEuc  1 e 1 @142 ]
+[s S24 . 1 `uc 1 SCS 1 0 :2:0 
+`uc 1 . 1 0 :1:2 
+`uc 1 IRCF 1 0 :4:3 
+]
+"1559
+[s S28 . 1 `uc 1 SCS0 1 0 :1:0 
+`uc 1 SCS1 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 IRCF0 1 0 :1:3 
+`uc 1 IRCF1 1 0 :1:4 
+`uc 1 IRCF2 1 0 :1:5 
+`uc 1 IRCF3 1 0 :1:6 
+]
+[u S36 . 1 `S24 1 . 1 0 `S28 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES36  1 e 1 @153 ]
+"1666
+[v _ADRESL ADRESL `VEuc  1 e 1 @155 ]
+"1686
+[v _ADRESH ADRESH `VEuc  1 e 1 @156 ]
+"1706
+[v _ADCON0 ADCON0 `VEuc  1 e 1 @157 ]
+"1786
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @158 ]
+"1914
+[v _LATB LATB `VEuc  1 e 1 @269 ]
+"2156
+[v _ANSELA ANSELA `VEuc  1 e 1 @396 ]
+[s S327 . 1 `uc 1 ANSA0 1 0 :1:0 
+`uc 1 ANSA1 1 0 :1:1 
+`uc 1 ANSA2 1 0 :1:2 
+`uc 1 ANSA3 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 ANSA5 1 0 :1:5 
+]
+"2174
+[s S334 . 1 `uc 1 ANSELA 1 0 :6:0 
+]
+[u S336 . 1 `S327 1 . 1 0 `S334 1 . 1 0 ]
+[v _ANSELAbits ANSELAbits `VES336  1 e 1 @396 ]
+"2267
+[v _ANSELC ANSELC `VEuc  1 e 1 @398 ]
+"2520
+>>>>>>> parent of 9a4dca4... Int2Str Coversion
+[v _RCREG RCREG `VEuc  1 e 1 @409 ]
+"2540
+[v _TXREG TXREG `VEuc  1 e 1 @410 ]
+"2572
+[v _SPBRG SPBRG `VEuc  1 e 1 @411 ]
+"2926
+[v _SSPBUF SSPBUF `VEuc  1 e 1 @529 ]
+"2964
+[v _SSPADD SSPADD `VEuc  1 e 1 @530 ]
+"3040
+[v _SSPSTAT SSPSTAT `VEuc  1 e 1 @532 ]
+"3162
+[v _SSPCON1 SSPCON1 `VEuc  1 e 1 @533 ]
+"3366
+[v _SSPCON2 SSPCON2 `VEuc  1 e 1 @534 ]
+"4371
+[v _BRGH BRGH `VEb  1 e 0 @3314 ]
+"4427
+[v _CREN CREN `VEb  1 e 0 @3308 ]
+"4587
+[v _OERR OERR `VEb  1 e 0 @3305 ]
+"4599
+[v _PEN PEN `VEb  1 e 0 @4274 ]
+"4657
+[v _RCEN RCEN `VEb  1 e 0 @4275 ]
+"4663
+[v _RCIF RCIF `VEb  1 e 0 @141 ]
+"4669
+[v _RSEN RSEN `VEb  1 e 0 @4273 ]
+"4671
+[v _RX9 RX9 `VEb  1 e 0 @3310 ]
+"4691
+[v _SEN SEN `VEb  1 e 0 @4272 ]
+"4699
+[v _SPEN SPEN `VEb  1 e 0 @3311 ]
+"4727
+[v _SYNC SYNC `VEb  1 e 0 @3316 ]
+"4839
+[v _TRISC3 TRISC3 `VEb  1 e 0 @1139 ]
+"4841
+[v _TRISC4 TRISC4 `VEb  1 e 0 @1140 ]
+"4845
+[v _TRISC6 TRISC6 `VEb  1 e 0 @1142 ]
+"4847
+[v _TRISC7 TRISC7 `VEb  1 e 0 @1143 ]
+"4855
+[v _TX9 TX9 `VEb  1 e 0 @3318 ]
+"4859
+[v _TXEN TXEN `VEb  1 e 0 @3317 ]
+"4863
+[v _TXIF TXIF `VEb  1 e 0 @140 ]
+<<<<<<< HEAD
+"22 C:\Users\Marcelo\Documents\GitHub\RobotSpider\RobotSpider.X\main.c
+[v _main main `(i  1 e 2 0 ]
+{
+"60
+} 0
+"5 C:\Users\Marcelo\Documents\GitHub\RobotSpider\RobotSpider.X\MPU6050.c
+[v _MPU6050_Init MPU6050_Init `(v  1 e 1 0 ]
+{
+"20
+} 0
+"62 C:\Users\Marcelo\Documents\GitHub\RobotSpider\RobotSpider.X\main.c
+[v _MPU6050_DeviceDriverTest MPU6050_DeviceDriverTest `(v  1 e 1 0 ]
+{
+"65
+[v MPU6050_DeviceDriverTest@buf buf `[10]uc  1 a 10 14 ]
+[s S46 . 6 `i 1 X 2 0 `i 1 Y 2 2 `i 1 Z 2 4 ]
+"63
+[s S54 . 14 `S46 1 Accel 6 0 `i 1 Temperature 2 6 `S46 1 Gyro 6 8 ]
+[v MPU6050_DeviceDriverTest@TestRun TestRun `*.1S54  1 a 1 24 ]
+"106
+} 0
+"73 C:\Users\Marcelo\Documents\GitHub\RobotSpider\RobotSpider.X\uart.c
+[v _int2str int2str `(v  1 e 1 0 ]
+{
+"75
+[v int2str@i i `i  1 a 2 10 ]
+[v int2str@sign sign `i  1 a 2 8 ]
+"73
+[v int2str@n n `i  1 p 2 11 ]
+[v int2str@s s `*.4uc  1 p 1 13 ]
+"87
+} 0
+"89
+[v _reverse reverse `(v  1 e 1 0 ]
+{
+[v reverse@s s `*.4uc  1 a 1 wreg ]
+"91
+[v reverse@j j `i  1 a 2 3 ]
+[v reverse@i i `i  1 a 2 1 ]
+"92
+[v reverse@c c `uc  1 a 1 0 ]
+"89
+[v reverse@s s `*.4uc  1 a 1 wreg ]
+"94
+[v reverse@s s `*.4uc  1 a 1 5 ]
+"99
+} 0
+"4 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\strlen.c
+[v _strlen strlen `(ui  1 e 2 0 ]
+{
+[v strlen@s s `*.4DCuc  1 a 1 wreg ]
+"6
+[v strlen@cp cp `*.4DCuc  1 a 1 7 ]
+"4
+[v strlen@s s `*.4DCuc  1 a 1 wreg ]
+"8
+[v strlen@s s `*.4DCuc  1 a 1 6 ]
+"13
+=======
+"41 C:\Users\Marcelo\Documents\GitHub\RobotSpider\RobotSpider.X\main.c
+[v _main main `(i  1 e 2 0 ]
+{
+"66
+[v main@t t `uc  1 a 1 16 ]
+"80
+>>>>>>> parent of 9a4dca4... Int2Str Coversion
+} 0
+"15 C:\Users\Marcelo\Documents\GitHub\RobotSpider\RobotSpider.X\OV7670.c
+[v _camInit camInit `(uc  1 e 1 0 ]
+{
+"21
+} 0
+"66 C:\Users\Marcelo\Documents\GitHub\RobotSpider\RobotSpider.X\uart.c
+[v _UART_send_string UART_send_string `(v  1 e 1 0 ]
+{
+[v UART_send_string@st_pt st_pt `*.25uc  1 p 2 1 ]
+"70
+} 0
+<<<<<<< HEAD
+"39
+[v _UART_send_char UART_send_char `(v  1 e 1 0 ]
+{
+[v UART_send_char@bt bt `uc  1 a 1 wreg ]
+[v UART_send_char@bt bt `uc  1 a 1 wreg ]
+[v UART_send_char@bt bt `uc  1 a 1 0 ]
+"43
+} 0
+"22 C:\Users\Marcelo\Documents\GitHub\RobotSpider\RobotSpider.X\MPU6050.c
+[v _MPU6050_Read MPU6050_Read `(v  1 e 1 0 ]
+{
+[s S46 . 6 `i 1 X 2 0 `i 1 Y 2 2 `i 1 Z 2 4 ]
+[s S54 . 14 `S46 1 Accel 6 0 `i 1 Temperature 2 6 `S46 1 Gyro 6 8 ]
+[v MPU6050_Read@Sensor Sensor `*.1S54  1 a 1 wreg ]
+"29
+[v MPU6050_Read@value_high value_high `ui  1 a 2 0 ]
+"30
+[v MPU6050_Read@value_low value_low `uc  1 a 1 2 ]
+"22
+[v MPU6050_Read@Sensor Sensor `*.1S54  1 a 1 wreg ]
+"24
+"22
+[v MPU6050_Read@Sensor Sensor `*.1S54  1 a 1 3 ]
+"63
+=======
+"20 C:\Users\Marcelo\Documents\GitHub\RobotSpider\RobotSpider.X\MPU6050.c
+[v _MPU6050_Read MPU6050_Read `(i  1 e 2 0 ]
+{
+[s S280 . 6 `i 1 X 2 0 `i 1 Y 2 2 `i 1 Z 2 4 ]
+"22
+[s S288 . 14 `S280 1 Accel 6 0 `i 1 Temperature 2 6 `S280 1 Gyro 6 8 ]
+[v MPU6050_Read@Sensor Sensor `S288  1 a 14 0 ]
+"39
+>>>>>>> parent of 9a4dca4... Int2Str Coversion
+} 0
+"6 C:\Program Files (x86)\Microchip\xc8\v1.45\sources\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+{
+"11
+[v ___awdiv@quotient quotient `i  1 a 2 7 ]
+"12
+[v ___awdiv@sign sign `uc  1 a 1 6 ]
+[v ___awdiv@counter counter `uc  1 a 1 5 ]
+"6
+[v ___awdiv@divisor divisor `i  1 p 2 0 ]
+[v ___awdiv@dividend dividend `i  1 p 2 2 ]
+"42
+} 0
+<<<<<<< HEAD
+"40 C:\Users\Marcelo\Documents\GitHub\RobotSpider\RobotSpider.X\i2c.c
+=======
+"50 C:\Users\Marcelo\Documents\GitHub\RobotSpider\RobotSpider.X\i2c.c
+[v _I2C_Master_Read I2C_Master_Read `(i  1 e 2 0 ]
+{
+"52
+[v I2C_Master_Read@temp temp `uc  1 a 1 7 ]
+"61
+} 0
+"3 C:\Users\Marcelo\Documents\GitHub\RobotSpider\RobotSpider.X\MPU6050.c
+[v _MPU6050_Init MPU6050_Init `(v  1 e 1 0 ]
+{
+"18
+} 0
+"30 C:\Users\Marcelo\Documents\GitHub\RobotSpider\RobotSpider.X\i2c.c
+[v _I2C_Master_Start I2C_Master_Start `(v  1 e 1 0 ]
+{
+"33
+} 0
+"6 C:\Users\Marcelo\Documents\GitHub\RobotSpider\RobotSpider.X\uart.c
+[v _Initialize_UART Initialize_UART `(v  1 e 1 0 ]
+{
+"33
+} 0
+"100 C:\Users\Marcelo\Documents\GitHub\RobotSpider\RobotSpider.X\OV7670.c
+[v _Init_QVGA Init_QVGA `(v  1 e 1 0 ]
+{
+"111
+} 0
+"78
+[v _Init_OV7670 Init_OV7670 `(v  1 e 1 0 ]
+{
+"98
+} 0
+"23
+[v _regWrite regWrite `(uc  1 e 1 0 ]
+{
+[v regWrite@reg reg `uc  1 a 1 wreg ]
+[v regWrite@reg reg `uc  1 a 1 wreg ]
+[v regWrite@data data `uc  1 p 1 4 ]
+[v regWrite@reg reg `uc  1 a 1 5 ]
+"31
+} 0
+"45 C:\Users\Marcelo\Documents\GitHub\RobotSpider\RobotSpider.X\i2c.c
+>>>>>>> parent of 9a4dca4... Int2Str Coversion
+[v _I2C_Master_Write I2C_Master_Write `(v  1 e 1 0 ]
+{
+[v I2C_Master_Write@d d `uc  1 a 1 wreg ]
+[v I2C_Master_Write@d d `uc  1 a 1 wreg ]
+<<<<<<< HEAD
+[v I2C_Master_Write@d d `uc  1 a 1 0 ]
+"43
+=======
+[v I2C_Master_Write@d d `uc  1 a 1 3 ]
+"48
+>>>>>>> parent of 9a4dca4... Int2Str Coversion
+} 0
+"35
+[v _I2C_Master_Stop I2C_Master_Stop `(v  1 e 1 0 ]
+{
+"38
+} 0
+<<<<<<< HEAD
+"25
+[v _I2C_Master_Start I2C_Master_Start `(v  1 e 1 0 ]
+{
+"28
+} 0
+"30
+[v _I2C_Master_Restart I2C_Master_Restart `(v  1 e 1 0 ]
+{
+"33
+=======
+"35
+[v _I2C_Master_Restart I2C_Master_Restart `(v  1 e 1 0 ]
+{
+"38
+>>>>>>> parent of 9a4dca4... Int2Str Coversion
+} 0
+"45
+[v _I2C_Master_Read I2C_Master_Read `(uc  1 e 1 0 ]
+{
+[v I2C_Master_Read@device device `uc  1 a 1 wreg ]
+"47
+[v I2C_Master_Read@temp temp `uc  1 a 1 2 ]
+"45
+[v I2C_Master_Read@device device `uc  1 a 1 wreg ]
+"48
+[v I2C_Master_Read@device device `uc  1 a 1 1 ]
+"60
+} 0
+"21
+[v _I2C_Master_Wait I2C_Master_Wait `(v  1 e 1 0 ]
+{
+"23
+} 0
+<<<<<<< HEAD
+"6 C:\Users\Marcelo\Documents\GitHub\RobotSpider\RobotSpider.X\uart.c
+[v _Initialize_UART Initialize_UART `(v  1 e 1 0 ]
+{
+"33
+} 0
+=======
+>>>>>>> parent of 9a4dca4... Int2Str Coversion
+"12 C:\Users\Marcelo\Documents\GitHub\RobotSpider\RobotSpider.X\i2c.c
+[v _I2C_Master_Init I2C_Master_Init `(v  1 e 1 0 ]
+{
+"18
+} 0
+<<<<<<< HEAD
+=======
+"14 C:\Users\Marcelo\Documents\GitHub\RobotSpider\RobotSpider.X\adc.c
+[v _ADC_Read ADC_Read `(i  1 e 2 0 ]
+{
+"21
+} 0
+"5
+[v _ADC_Init ADC_Init `(v  1 e 1 0 ]
+{
+"12
+} 0
+>>>>>>> parent of 9a4dca4... Int2Str Coversion
